@@ -1,0 +1,397 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="96157f36-0c9f-4f07-9cf7-a7a9e2ec6d12" name="reichert@DESKTOP-N1G2M77 2026-03-17 21:27:33" runUser="DESKTOP-N1G2M77\reichert" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-03-17T21:27:33.7544327-03:00" queuing="2026-03-17T21:27:33.7544331-03:00" start="2026-03-17T21:27:33.2413427-03:00" finish="2026-03-17T21:27:33.8547755-03:00" />
+  <TestSettings name="default" id="b5a3abf6-b9b4-4d87-9751-d49b9ad0ca66">
+    <Deployment runDeploymentRoot="reichert_DESKTOP-N1G2M77_2026-03-17_21_27_33" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="bc3dba88-9ea0-41b1-aaba-3eb78d5fa09c" testId="22a724bc-d757-801a-1d1e-bc20290b5da3" testName="Mediax.Tests.ResultTests.Match_CallsOkBranchOnSuccess" computerName="DESKTOP-N1G2M77" duration="00:00:00.0002501" startTime="2026-03-17T21:27:33.7975061-03:00" endTime="2026-03-17T21:27:33.7975062-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bc3dba88-9ea0-41b1-aaba-3eb78d5fa09c" />
+    <UnitTestResult executionId="9eaba8e1-1b76-4525-b2ad-c45cd92a0ea6" testId="a4866cef-6841-9281-2d3f-8ae642a04590" testName="Mediax.Tests.DebugabilityTests.StackTrace_WhenHandlerThrows_ContainsHandlerClassName" computerName="DESKTOP-N1G2M77" duration="00:00:00.0014240" startTime="2026-03-17T21:27:33.7770888-03:00" endTime="2026-03-17T21:27:33.7770889-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9eaba8e1-1b76-4525-b2ad-c45cd92a0ea6" />
+    <UnitTestResult executionId="26543b21-8e40-4897-ae42-302a2ac7d116" testId="b96510e8-879d-408d-a078-950dbf6ccd6b" testName="Mediax.Tests.ErrorTests.Internal_SetsInternalType" computerName="DESKTOP-N1G2M77" duration="00:00:00.0001247" startTime="2026-03-17T21:27:33.6369127-03:00" endTime="2026-03-17T21:27:33.6369128-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="26543b21-8e40-4897-ae42-302a2ac7d116" />
+    <UnitTestResult executionId="b20b9d91-f3ca-4c88-b556-741bb9ab0905" testId="1981bcd1-1513-59a3-0565-24ba9e56639a" testName="Mediax.Tests.ResultTests.Map_TransformsValueOnSuccess" computerName="DESKTOP-N1G2M77" duration="00:00:00.0002310" startTime="2026-03-17T21:27:33.7969666-03:00" endTime="2026-03-17T21:27:33.7969666-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b20b9d91-f3ca-4c88-b556-741bb9ab0905" />
+    <UnitTestResult executionId="b6bdfdfc-644d-4312-9696-325c53c70f36" testId="e81a8697-869c-d876-4004-04c1b25e7658" testName="Mediax.Tests.BehaviorTests.ValidationBehavior_PassesWhenValidatorsPass" computerName="DESKTOP-N1G2M77" duration="00:00:00.0008102" startTime="2026-03-17T21:27:33.8172512-03:00" endTime="2026-03-17T21:27:33.8172513-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b6bdfdfc-644d-4312-9696-325c53c70f36" />
+    <UnitTestResult executionId="e27b4189-c978-49d2-b4f5-b63cccab9e8d" testId="185f4ee2-5818-0776-682f-d0caa5c97284" testName="Mediax.Tests.DebugabilityTests.MediaxDispatcher_DoesNotHaveCompilerGeneratedAttribute" computerName="DESKTOP-N1G2M77" duration="00:00:00.0000913" startTime="2026-03-17T21:27:33.7784540-03:00" endTime="2026-03-17T21:27:33.7784541-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e27b4189-c978-49d2-b4f5-b63cccab9e8d" />
+    <UnitTestResult executionId="7d3c6ef0-9ec8-4779-b2b5-26cc4d16e70d" testId="cd30d56e-a0d3-7eb4-b3df-2114a5188e59" testName="Mediax.Tests.FakeDispatcherTests.FakeDispatcher_Returns_ConfiguredValue" computerName="DESKTOP-N1G2M77" duration="00:00:00.0003042" startTime="2026-03-17T21:27:33.7955947-03:00" endTime="2026-03-17T21:27:33.7955947-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7d3c6ef0-9ec8-4779-b2b5-26cc4d16e70d" />
+    <UnitTestResult executionId="5464e73d-2256-4dbd-91a0-baafb6501378" testId="ed2f7708-6751-ca5a-1133-2841f261112e" testName="Mediax.Tests.ResultTests.Map_PreservesErrorOnFailure" computerName="DESKTOP-N1G2M77" duration="00:00:00.0001120" startTime="2026-03-17T21:27:33.7971079-03:00" endTime="2026-03-17T21:27:33.7971080-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5464e73d-2256-4dbd-91a0-baafb6501378" />
+    <UnitTestResult executionId="178c86d4-4733-4e73-a42d-644e789b437f" testId="c4739169-40a5-55fa-cf5c-7951bc54fa9b" testName="Mediax.Tests.DispatchTests.Query_IsQuery_ReturnsTrue" computerName="DESKTOP-N1G2M77" duration="00:00:00.0003719" startTime="2026-03-17T21:27:33.7404694-03:00" endTime="2026-03-17T21:27:33.7404694-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="178c86d4-4733-4e73-a42d-644e789b437f" />
+    <UnitTestResult executionId="80638bee-1d90-4f69-bcda-68de06df2310" testId="5ef257e5-e761-7618-e981-ead033c7978a" testName="Mediax.Tests.DispatchTests.Command_IsCommand_ReturnsTrue" computerName="DESKTOP-N1G2M77" duration="00:00:00.0001563" startTime="2026-03-17T21:27:33.7432290-03:00" endTime="2026-03-17T21:27:33.7432291-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="80638bee-1d90-4f69-bcda-68de06df2310" />
+    <UnitTestResult executionId="8dda8e60-65cc-4522-9d94-c5feb6cca67d" testId="8b2250b3-0f1e-7788-5bb5-e65e5243ce8e" testName="Mediax.Tests.DebugabilityTests.PlumbingMethods_HaveDebuggerStepThroughAttribute(methodName: &quot;Stream&quot;)" computerName="DESKTOP-N1G2M77" duration="00:00:00.0003074" startTime="2026-03-17T21:27:33.7771289-03:00" endTime="2026-03-17T21:27:33.7771290-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8dda8e60-65cc-4522-9d94-c5feb6cca67d" />
+    <UnitTestResult executionId="a8be028c-df75-48bf-a037-4097ad13ecc4" testId="d2707c42-9988-e247-e2a9-13e0d2671bf8" testName="Mediax.Tests.DebugabilityTests.PlumbingMethods_HaveDebuggerStepThroughAttribute(methodName: &quot;Dispatch&quot;)" computerName="DESKTOP-N1G2M77" duration="00:00:00.0001639" startTime="2026-03-17T21:27:33.7771523-03:00" endTime="2026-03-17T21:27:33.7771524-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a8be028c-df75-48bf-a037-4097ad13ecc4" />
+    <UnitTestResult executionId="afb44b72-9d8d-437d-a62a-e1d2c489aa18" testId="74c21ce1-f578-bb20-68d3-645ac6415a5d" testName="Mediax.Tests.EventTests.Event_Publish_CallsAllHandlers" computerName="DESKTOP-N1G2M77" duration="00:00:00.0026670" startTime="2026-03-17T21:27:33.7815987-03:00" endTime="2026-03-17T21:27:33.7815987-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="afb44b72-9d8d-437d-a62a-e1d2c489aa18" />
+    <UnitTestResult executionId="adaf106a-4d37-4732-aa17-dee074324921" testId="4e9bfd20-0e44-520c-5aaf-94678020fb79" testName="Mediax.Tests.ResultTests.ImplicitConversion_FromValue" computerName="DESKTOP-N1G2M77" duration="00:00:00.0001060" startTime="2026-03-17T21:27:33.7965869-03:00" endTime="2026-03-17T21:27:33.7965870-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="adaf106a-4d37-4732-aa17-dee074324921" />
+    <UnitTestResult executionId="60a685a0-a6dc-490b-8fcd-4e3845b97ce8" testId="99beb980-285b-eda1-dea4-4cdbb8932c22" testName="Mediax.Tests.BehaviorTests.ValidationBehavior_ReturnsValidationError_WhenValidatorFails" computerName="DESKTOP-N1G2M77" duration="00:00:00.0147263" startTime="2026-03-17T21:27:33.8163931-03:00" endTime="2026-03-17T21:27:33.8163935-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="60a685a0-a6dc-490b-8fcd-4e3845b97ce8" />
+    <UnitTestResult executionId="7d52ec2b-84d1-48de-95de-2cf053aeeabb" testId="a99058aa-5b0c-1d2e-5871-bada5aa27a1f" testName="Mediax.Tests.DebugabilityTests.GeneratedDispatcher_HasNoIndexBasedDispatchMethod" computerName="DESKTOP-N1G2M77" duration="00:00:00.0016455" startTime="2026-03-17T21:27:33.7781294-03:00" endTime="2026-03-17T21:27:33.7781296-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7d52ec2b-84d1-48de-95de-2cf053aeeabb" />
+    <UnitTestResult executionId="ec577757-ce9b-4520-9730-31a83daf8c88" testId="6ea2aeb8-cb4d-d9df-cd3e-739851e60a2c" testName="Mediax.Tests.ResultTests.Bind_ShortCircuitsOnFailure" computerName="DESKTOP-N1G2M77" duration="00:00:00.0003641" startTime="2026-03-17T21:27:33.7960367-03:00" endTime="2026-03-17T21:27:33.7960368-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ec577757-ce9b-4520-9730-31a83daf8c88" />
+    <UnitTestResult executionId="fe7741d4-a01e-4d5e-9248-3029370284fe" testId="46fb776e-9f92-0dc8-a4aa-66ca8effc894" testName="Mediax.Tests.FakeDispatcherTests.FakeDispatcher_Reset_ClearsState" computerName="DESKTOP-N1G2M77" duration="00:00:00.0019397" startTime="2026-03-17T21:27:33.7922425-03:00" endTime="2026-03-17T21:27:33.7922427-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fe7741d4-a01e-4d5e-9248-3029370284fe" />
+    <UnitTestResult executionId="36589d4a-dfc1-4f35-8287-916c0835bdd4" testId="f686e3bf-9852-4dfd-9ce7-cea92886cd03" testName="Mediax.Tests.DebugabilityTests.MediaxStaticHandlers_HasCompilerGeneratedAttribute" computerName="DESKTOP-N1G2M77" duration="00:00:00.0001455" startTime="2026-03-17T21:27:33.7783404-03:00" endTime="2026-03-17T21:27:33.7783406-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="36589d4a-dfc1-4f35-8287-916c0835bdd4" />
+    <UnitTestResult executionId="19e50e50-ad64-4307-9480-dfb454701b6f" testId="7826fe47-b40e-a848-9ed2-0875e9bada78" testName="Mediax.Tests.ErrorTests.NotFound_SetsCorrectType" computerName="DESKTOP-N1G2M77" duration="00:00:00.0017810" startTime="2026-03-17T21:27:33.6367561-03:00" endTime="2026-03-17T21:27:33.6367563-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="19e50e50-ad64-4307-9480-dfb454701b6f" />
+    <UnitTestResult executionId="76f2162a-d613-4506-ace6-33ad1a7c7854" testId="ff9d4728-72b7-ffef-b0d2-da3fbbf96113" testName="Mediax.Tests.DebugabilityTests.CastWrapperMethods_HaveDebuggerStepThrough" computerName="DESKTOP-N1G2M77" duration="00:00:00.0003372" startTime="2026-03-17T21:27:33.7788525-03:00" endTime="2026-03-17T21:27:33.7788525-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="76f2162a-d613-4506-ace6-33ad1a7c7854" />
+    <UnitTestResult executionId="5a310c26-081b-4fe8-b2a9-99e67e8e1c4b" testId="55bfc73b-e07a-c3ab-5ccf-809e8bee09c2" testName="Mediax.Tests.DecoratorTests.WithRetry_DispatchesInnerRequest" computerName="DESKTOP-N1G2M77" duration="00:00:00.0063962" startTime="2026-03-17T21:27:33.7383868-03:00" endTime="2026-03-17T21:27:33.7383868-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5a310c26-081b-4fe8-b2a9-99e67e8e1c4b" />
+    <UnitTestResult executionId="ab643ad7-3b06-4c79-a4ea-759d5ed24dcb" testId="2a6593ff-96af-8cf0-449d-7b8c38fc02c4" testName="Mediax.Tests.DecoratorTests.WithTimeout_DispatchesInnerRequest" computerName="DESKTOP-N1G2M77" duration="00:00:00.0140571" startTime="2026-03-17T21:27:33.7399630-03:00" endTime="2026-03-17T21:27:33.7399630-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ab643ad7-3b06-4c79-a4ea-759d5ed24dcb" />
+    <UnitTestResult executionId="43bef276-63d3-426d-8756-cef85effaa4a" testId="d979fe0f-f97d-efb2-8973-86ae03c79f77" testName="Mediax.Tests.FakeDispatcherTests.FakeDispatcher_TracksDispatchedRequests" computerName="DESKTOP-N1G2M77" duration="00:00:00.0008759" startTime="2026-03-17T21:27:33.7931687-03:00" endTime="2026-03-17T21:27:33.7931687-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="43bef276-63d3-426d-8756-cef85effaa4a" />
+    <UnitTestResult executionId="f7f74bea-f24f-4c1e-9947-5cb23d4596fd" testId="57cc85f3-432b-c5be-d6b1-723bd7440b96" testName="Mediax.Tests.FakeDispatcherTests.FakeDispatcher_Fails_ReturnsFailureResult" computerName="DESKTOP-N1G2M77" duration="00:00:00.0009874" startTime="2026-03-17T21:27:33.7952115-03:00" endTime="2026-03-17T21:27:33.7952115-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f7f74bea-f24f-4c1e-9947-5cb23d4596fd" />
+    <UnitTestResult executionId="20a10824-cfbc-4df6-967c-431ccb2d04c3" testId="66ca53d7-7e82-5d5f-cfad-f7ee01a684c8" testName="Mediax.Tests.DecoratorTests.WithRetry_WrapsRequest_InRetryDecorator" computerName="DESKTOP-N1G2M77" duration="00:00:00.0002127" startTime="2026-03-17T21:27:33.7193904-03:00" endTime="2026-03-17T21:27:33.7193904-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="20a10824-cfbc-4df6-967c-431ccb2d04c3" />
+    <UnitTestResult executionId="d81747a8-1f7e-428f-8ea0-7ed07197d8e2" testId="1b9d6369-04cc-04c5-6ab2-e7e6b0ab0c5a" testName="Mediax.Tests.ResultTests.Bind_ChainsResultsOnSuccess" computerName="DESKTOP-N1G2M77" duration="00:00:00.0002548" startTime="2026-03-17T21:27:33.7964556-03:00" endTime="2026-03-17T21:27:33.7964557-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d81747a8-1f7e-428f-8ea0-7ed07197d8e2" />
+    <UnitTestResult executionId="7530c9bc-f875-46a9-913a-f61f582b000d" testId="8801b016-3cef-b69c-0cb3-62205e01eaca" testName="Mediax.Tests.ResultTests.Ok_CreatesSuccessResult" computerName="DESKTOP-N1G2M77" duration="00:00:00.0001251" startTime="2026-03-17T21:27:33.7961752-03:00" endTime="2026-03-17T21:27:33.7961753-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7530c9bc-f875-46a9-913a-f61f582b000d" />
+    <UnitTestResult executionId="388cc045-25d0-4540-b6d1-afbbd859c832" testId="a2187dde-7c1b-c5fb-4e10-3a5964980b06" testName="Mediax.Tests.ErrorTests.DefaultMessage_GeneratedWhenNullPassed" computerName="DESKTOP-N1G2M77" duration="00:00:00.0003948" startTime="2026-03-17T21:27:33.6348993-03:00" endTime="2026-03-17T21:27:33.6348994-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="388cc045-25d0-4540-b6d1-afbbd859c832" />
+    <UnitTestResult executionId="30de475c-b669-45da-9e82-198354d6e301" testId="f5ded6f3-3095-9752-4f5b-4f9ba465b7b3" testName="Mediax.Tests.DispatchTests.Dispatch_Command_ReturnsSum" computerName="DESKTOP-N1G2M77" duration="00:00:00.0005453" startTime="2026-03-17T21:27:33.7415185-03:00" endTime="2026-03-17T21:27:33.7415186-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="30de475c-b669-45da-9e82-198354d6e301" />
+    <UnitTestResult executionId="066d7a58-8bd5-4283-adfd-70f5d51f954b" testId="f545e4ce-e875-1ea7-16eb-d78377397641" testName="Mediax.Tests.StreamTests.Should_Stream_Results_From_Handler" computerName="DESKTOP-N1G2M77" duration="00:00:00.0063822" startTime="2026-03-17T21:27:33.7883543-03:00" endTime="2026-03-17T21:27:33.7883549-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="066d7a58-8bd5-4283-adfd-70f5d51f954b" />
+    <UnitTestResult executionId="fbcf8ca9-c1af-45b5-80cd-0118e14155ff" testId="634aae4b-e378-5508-52a5-47bc673b20ea" testName="Mediax.Tests.StreamTests.Should_Stream_Results_Via_Static_Extension" computerName="DESKTOP-N1G2M77" duration="00:00:00.0013786" startTime="2026-03-17T21:27:33.7900666-03:00" endTime="2026-03-17T21:27:33.7900670-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fbcf8ca9-c1af-45b5-80cd-0118e14155ff" />
+    <UnitTestResult executionId="fc5d0f52-4a26-4897-a7e0-9187157cff25" testId="352f126e-7407-f197-a0c0-cbf589277771" testName="Mediax.Tests.DebugabilityTests.NamedDispatchMethods_DoNotHaveDebuggerStepThrough" computerName="DESKTOP-N1G2M77" duration="00:00:00.0267314" startTime="2026-03-17T21:27:33.7757662-03:00" endTime="2026-03-17T21:27:33.7757665-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fc5d0f52-4a26-4897-a7e0-9187157cff25">
+      <Output>
+        <ErrorInfo>
+          <Message>Expected method.GetCustomAttribute&lt;DebuggerStepThroughAttribute&gt;() to be &lt;null&gt; because Dispatch_TrackedScopedHandler should NOT have [DebuggerStepThrough] — it is a breakpoint target, but found System.Diagnostics.DebuggerStepThroughAttribute&#xD;
+{&#xD;
+    TypeId = System.Diagnostics.DebuggerStepThroughAttribute&#xD;
+}.</Message>
+          <StackTrace>   at FluentAssertions.Execution.LateBoundTestFramework.Throw(String message)&#xD;
+   at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)&#xD;
+   at FluentAssertions.Execution.AssertionScope.AddPreFormattedFailure(String formattedFailureMessage)&#xD;
+   at FluentAssertions.Execution.AssertionChain.FailWith(Func`1 getFailureReason)&#xD;
+   at FluentAssertions.Execution.AssertionChain.FailWith(Func`1 getFailureReason)&#xD;
+   at FluentAssertions.Execution.AssertionChain.FailWith(String message, Object[] args)&#xD;
+   at FluentAssertions.Primitives.ReferenceTypeAssertions`2.BeNull(String because, Object[] becauseArgs)&#xD;
+   at Mediax.Tests.DebugabilityTests.NamedDispatchMethods_DoNotHaveDebuggerStepThrough() in C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\DebugabilityTests.cs:line 110&#xD;
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="2a86db2c-d371-4924-8795-8fa0b57164fe" testId="361b4c7b-bb03-975b-a9a4-b5c14b669937" testName="Mediax.Tests.BehaviorTests.LogBehavior_DoesNotAffectResult" computerName="DESKTOP-N1G2M77" duration="00:00:00.0004944" startTime="2026-03-17T21:27:33.8177704-03:00" endTime="2026-03-17T21:27:33.8177704-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2a86db2c-d371-4924-8795-8fa0b57164fe" />
+    <UnitTestResult executionId="31210d60-74ca-4426-83db-1f3ecd272ca5" testId="5b87444b-a07e-7ba3-fdcc-b6c4ba1f9b0a" testName="Mediax.Tests.DispatchTests.Dispatch_Query_ReturnsEchoedMessage" computerName="DESKTOP-N1G2M77" duration="00:00:00.0010924" startTime="2026-03-17T21:27:33.7443532-03:00" endTime="2026-03-17T21:27:33.7443532-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="31210d60-74ca-4426-83db-1f3ecd272ca5" />
+    <UnitTestResult executionId="ee4ebb99-a125-4cfc-8faa-dc650772ab2a" testId="d5c31177-c6e4-c783-ab62-a7202e3f5c8e" testName="Mediax.Tests.ErrorTests.Conflict_SetsConflictType" computerName="DESKTOP-N1G2M77" duration="00:00:00.0039595" startTime="2026-03-17T21:27:33.6269734-03:00" endTime="2026-03-17T21:27:33.6269894-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ee4ebb99-a125-4cfc-8faa-dc650772ab2a" />
+    <UnitTestResult executionId="5b8874f3-20e6-4308-9516-90e39be4332a" testId="21409ba4-0a8f-3d5b-c964-dfd0b8704934" testName="Mediax.Tests.DebugabilityTests.GeneratedDispatcher_AllHandlersHaveNamedMethods" computerName="DESKTOP-N1G2M77" duration="00:00:00.0009694" startTime="2026-03-17T21:27:33.7776360-03:00" endTime="2026-03-17T21:27:33.7776360-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5b8874f3-20e6-4308-9516-90e39be4332a" />
+    <UnitTestResult executionId="5c92076e-f6bd-4d06-9137-74498603f186" testId="7cfaa768-8331-fb80-8dc7-2cac329179c5" testName="Mediax.Tests.DebugabilityTests.PlumbingMethods_HaveDebuggerStepThroughAttribute(methodName: &quot;Publish&quot;)" computerName="DESKTOP-N1G2M77" duration="00:00:00.0001171" startTime="2026-03-17T21:27:33.7775770-03:00" endTime="2026-03-17T21:27:33.7775770-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5c92076e-f6bd-4d06-9137-74498603f186">
+      <Output>
+        <ErrorInfo>
+          <Message>System.Reflection.AmbiguousMatchException : Multiple custom attributes of the same type 'System.Diagnostics.DebuggerStepThroughAttribute' found.</Message>
+          <StackTrace>   at System.Attribute.GetCustomAttribute(MemberInfo element, Type attributeType, Boolean inherit)&#xD;
+   at System.Reflection.CustomAttributeExtensions.GetCustomAttribute[T](MemberInfo element)&#xD;
+   at Mediax.Tests.DebugabilityTests.PlumbingMethods_HaveDebuggerStepThroughAttribute(String methodName) in C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\DebugabilityTests.cs:line 95&#xD;
+   at InvokeStub_DebugabilityTests.PlumbingMethods_HaveDebuggerStepThroughAttribute(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c9f1bb2c-3086-4586-944d-b8179433e65e" testId="eb1f6a1f-fe20-34ae-4a03-45d5ac1fcd4c" testName="Mediax.Tests.AdvancedGeneratorTests.AsyncLocal_ParallelTests_DoNotInterfere" computerName="DESKTOP-N1G2M77" duration="00:00:00.0722689" startTime="2026-03-17T21:27:33.7123320-03:00" endTime="2026-03-17T21:27:33.7123326-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c9f1bb2c-3086-4586-944d-b8179433e65e" />
+    <UnitTestResult executionId="a9712eaf-63ec-4074-a1a1-39b4d9273dbe" testId="728cbc1e-917a-92a1-a484-762afd2baffa" testName="Mediax.Tests.DispatchTests.Dispatch_FailingCommand_ReturnsFailResult" computerName="DESKTOP-N1G2M77" duration="00:00:00.0014922" startTime="2026-03-17T21:27:33.7430558-03:00" endTime="2026-03-17T21:27:33.7430559-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a9712eaf-63ec-4074-a1a1-39b4d9273dbe" />
+    <UnitTestResult executionId="bc4d1d99-40e6-4074-9770-266c54a1e11e" testId="7ae990ad-e3a4-c985-bc07-83d3e35f723d" testName="Mediax.Tests.ErrorTests.Validation_IncludesDetails" computerName="DESKTOP-N1G2M77" duration="00:00:00.0077201" startTime="2026-03-17T21:27:33.6344893-03:00" endTime="2026-03-17T21:27:33.6344897-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bc4d1d99-40e6-4074-9770-266c54a1e11e" />
+    <UnitTestResult executionId="152cb31e-923d-4922-bc47-f20b79e1f77e" testId="abd651c7-60b4-0b9c-e6e6-fb6a0515c0f1" testName="Mediax.Tests.DispatchTests.Dispatch_UnknownRequest_ThrowsKeyNotFoundException" computerName="DESKTOP-N1G2M77" duration="00:00:00.0004351" startTime="2026-03-17T21:27:33.7409397-03:00" endTime="2026-03-17T21:27:33.7409398-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="152cb31e-923d-4922-bc47-f20b79e1f77e" />
+    <UnitTestResult executionId="7d2f6669-ed45-4458-802f-d462907d2a7c" testId="e62cd454-7839-15be-3c5e-d09f701a7b71" testName="Mediax.Tests.DebugabilityTests.GeneratedDispatcher_HasMethodNamedAfterHandler_NotIndex" computerName="DESKTOP-N1G2M77" duration="00:00:00.0004008" startTime="2026-03-17T21:27:33.7770341-03:00" endTime="2026-03-17T21:27:33.7770341-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7d2f6669-ed45-4458-802f-d462907d2a7c" />
+    <UnitTestResult executionId="5579e62e-0937-4cf6-bafa-20aea6b86c66" testId="353b0a2e-cd01-a0cd-1c34-ad6c1690a636" testName="Mediax.Tests.FakeDispatcherTests.FakeDispatcher_Returns_FactoryValue" computerName="DESKTOP-N1G2M77" duration="00:00:00.0006018" startTime="2026-03-17T21:27:33.7937947-03:00" endTime="2026-03-17T21:27:33.7937948-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5579e62e-0937-4cf6-bafa-20aea6b86c66" />
+    <UnitTestResult executionId="3373e056-ee8b-4419-beaa-5e8708c9782d" testId="5efb6f80-d5d5-e8ed-1361-0aee58377ffc" testName="Mediax.Tests.ResultTests.Fail_CreatesFailureResult" computerName="DESKTOP-N1G2M77" duration="00:00:00.0000936" startTime="2026-03-17T21:27:33.7972323-03:00" endTime="2026-03-17T21:27:33.7972323-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3373e056-ee8b-4419-beaa-5e8708c9782d" />
+    <UnitTestResult executionId="87e9d04c-df95-4f2a-953c-06cacd9de38c" testId="aaaceb3a-c221-364c-dc5d-44bd9838dfaa" testName="Mediax.Tests.DecoratorTests.WithTimeout_WrapsRequest_InTimeoutDecorator" computerName="DESKTOP-N1G2M77" duration="00:00:00.0010326" startTime="2026-03-17T21:27:33.7191431-03:00" endTime="2026-03-17T21:27:33.7191431-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="87e9d04c-df95-4f2a-953c-06cacd9de38c" />
+    <UnitTestResult executionId="693e432c-b9cc-4522-b598-b96f0f02cd39" testId="7a50c891-c83d-5d81-57f5-740069b1984f" testName="Mediax.Tests.ResultTests.ImplicitConversion_FromError" computerName="DESKTOP-N1G2M77" duration="00:00:00.0001045" startTime="2026-03-17T21:27:33.7967128-03:00" endTime="2026-03-17T21:27:33.7967129-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="693e432c-b9cc-4522-b598-b96f0f02cd39" />
+    <UnitTestResult executionId="d997cc3b-ec96-4c6c-b9c4-3059cc246937" testId="e5bbd0f5-d880-f15b-28df-0e6869b765e2" testName="Mediax.Tests.ResultTests.Match_CallsFailBranchOnFailure" computerName="DESKTOP-N1G2M77" duration="00:00:00.0002275" startTime="2026-03-17T21:27:33.8014304-03:00" endTime="2026-03-17T21:27:33.8014305-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d997cc3b-ec96-4c6c-b9c4-3059cc246937" />
+    <UnitTestResult executionId="cbba9f11-b6d8-4a99-858b-3c469da643ac" testId="6b8b80a9-33ce-dcb8-0668-e9e9cf161c73" testName="Mediax.Tests.AdvancedGeneratorTests.ScopedHandler_UsingStatement_DisposesAfterSend" computerName="DESKTOP-N1G2M77" duration="00:00:00.0039858" startTime="2026-03-17T21:27:33.7171071-03:00" endTime="2026-03-17T21:27:33.7171072-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cbba9f11-b6d8-4a99-858b-3c469da643ac" />
+    <UnitTestResult executionId="afc4f2d3-fa30-4102-84b9-164c160d2552" testId="47651d43-dc2e-db27-1273-c893a8f7d738" testName="Mediax.Tests.FakeDispatcherTests.FakeDispatcher_ReturnsDefaultForUnregisteredRequest" computerName="DESKTOP-N1G2M77" duration="00:00:00.0003653" startTime="2026-03-17T21:27:33.7941912-03:00" endTime="2026-03-17T21:27:33.7941912-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="afc4f2d3-fa30-4102-84b9-164c160d2552" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Mediax.Tests.DebugabilityTests.PlumbingMethods_HaveDebuggerStepThroughAttribute(methodName: &quot;Stream&quot;)" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="8b2250b3-0f1e-7788-5bb5-e65e5243ce8e">
+      <Execution id="8dda8e60-65cc-4522-9d94-c5feb6cca67d" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.DebugabilityTests" name="PlumbingMethods_HaveDebuggerStepThroughAttribute" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.ResultTests.Map_PreservesErrorOnFailure" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="ed2f7708-6751-ca5a-1133-2841f261112e">
+      <Execution id="5464e73d-2256-4dbd-91a0-baafb6501378" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.ResultTests" name="Map_PreservesErrorOnFailure" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.FakeDispatcherTests.FakeDispatcher_Reset_ClearsState" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="46fb776e-9f92-0dc8-a4aa-66ca8effc894">
+      <Execution id="fe7741d4-a01e-4d5e-9248-3029370284fe" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.FakeDispatcherTests" name="FakeDispatcher_Reset_ClearsState" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.ErrorTests.Validation_IncludesDetails" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="7ae990ad-e3a4-c985-bc07-83d3e35f723d">
+      <Execution id="bc4d1d99-40e6-4074-9770-266c54a1e11e" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.ErrorTests" name="Validation_IncludesDetails" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.DispatchTests.Command_IsCommand_ReturnsTrue" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="5ef257e5-e761-7618-e981-ead033c7978a">
+      <Execution id="80638bee-1d90-4f69-bcda-68de06df2310" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.DispatchTests" name="Command_IsCommand_ReturnsTrue" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.EventTests.Event_Publish_CallsAllHandlers" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="74c21ce1-f578-bb20-68d3-645ac6415a5d">
+      <Execution id="afb44b72-9d8d-437d-a62a-e1d2c489aa18" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.EventTests" name="Event_Publish_CallsAllHandlers" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.DecoratorTests.WithTimeout_DispatchesInnerRequest" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="2a6593ff-96af-8cf0-449d-7b8c38fc02c4">
+      <Execution id="ab643ad7-3b06-4c79-a4ea-759d5ed24dcb" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.DecoratorTests" name="WithTimeout_DispatchesInnerRequest" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.DispatchTests.Query_IsQuery_ReturnsTrue" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="c4739169-40a5-55fa-cf5c-7951bc54fa9b">
+      <Execution id="178c86d4-4733-4e73-a42d-644e789b437f" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.DispatchTests" name="Query_IsQuery_ReturnsTrue" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.StreamTests.Should_Stream_Results_Via_Static_Extension" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="634aae4b-e378-5508-52a5-47bc673b20ea">
+      <Execution id="fbcf8ca9-c1af-45b5-80cd-0118e14155ff" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.StreamTests" name="Should_Stream_Results_Via_Static_Extension" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.ResultTests.Bind_ChainsResultsOnSuccess" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="1b9d6369-04cc-04c5-6ab2-e7e6b0ab0c5a">
+      <Execution id="d81747a8-1f7e-428f-8ea0-7ed07197d8e2" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.ResultTests" name="Bind_ChainsResultsOnSuccess" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.ResultTests.Match_CallsOkBranchOnSuccess" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="22a724bc-d757-801a-1d1e-bc20290b5da3">
+      <Execution id="bc3dba88-9ea0-41b1-aaba-3eb78d5fa09c" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.ResultTests" name="Match_CallsOkBranchOnSuccess" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.ErrorTests.NotFound_SetsCorrectType" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="7826fe47-b40e-a848-9ed2-0875e9bada78">
+      <Execution id="19e50e50-ad64-4307-9480-dfb454701b6f" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.ErrorTests" name="NotFound_SetsCorrectType" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.DebugabilityTests.GeneratedDispatcher_HasMethodNamedAfterHandler_NotIndex" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="e62cd454-7839-15be-3c5e-d09f701a7b71">
+      <Execution id="7d2f6669-ed45-4458-802f-d462907d2a7c" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.DebugabilityTests" name="GeneratedDispatcher_HasMethodNamedAfterHandler_NotIndex" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.DispatchTests.Dispatch_FailingCommand_ReturnsFailResult" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="728cbc1e-917a-92a1-a484-762afd2baffa">
+      <Execution id="a9712eaf-63ec-4074-a1a1-39b4d9273dbe" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.DispatchTests" name="Dispatch_FailingCommand_ReturnsFailResult" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.FakeDispatcherTests.FakeDispatcher_Fails_ReturnsFailureResult" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="57cc85f3-432b-c5be-d6b1-723bd7440b96">
+      <Execution id="f7f74bea-f24f-4c1e-9947-5cb23d4596fd" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.FakeDispatcherTests" name="FakeDispatcher_Fails_ReturnsFailureResult" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.AdvancedGeneratorTests.AsyncLocal_ParallelTests_DoNotInterfere" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="eb1f6a1f-fe20-34ae-4a03-45d5ac1fcd4c">
+      <Execution id="c9f1bb2c-3086-4586-944d-b8179433e65e" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.AdvancedGeneratorTests" name="AsyncLocal_ParallelTests_DoNotInterfere" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.ResultTests.ImplicitConversion_FromValue" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="4e9bfd20-0e44-520c-5aaf-94678020fb79">
+      <Execution id="adaf106a-4d37-4732-aa17-dee074324921" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.ResultTests" name="ImplicitConversion_FromValue" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.StreamTests.Should_Stream_Results_From_Handler" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="f545e4ce-e875-1ea7-16eb-d78377397641">
+      <Execution id="066d7a58-8bd5-4283-adfd-70f5d51f954b" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.StreamTests" name="Should_Stream_Results_From_Handler" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.ResultTests.Match_CallsFailBranchOnFailure" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="e5bbd0f5-d880-f15b-28df-0e6869b765e2">
+      <Execution id="d997cc3b-ec96-4c6c-b9c4-3059cc246937" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.ResultTests" name="Match_CallsFailBranchOnFailure" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.FakeDispatcherTests.FakeDispatcher_Returns_ConfiguredValue" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="cd30d56e-a0d3-7eb4-b3df-2114a5188e59">
+      <Execution id="7d3c6ef0-9ec8-4779-b2b5-26cc4d16e70d" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.FakeDispatcherTests" name="FakeDispatcher_Returns_ConfiguredValue" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.FakeDispatcherTests.FakeDispatcher_ReturnsDefaultForUnregisteredRequest" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="47651d43-dc2e-db27-1273-c893a8f7d738">
+      <Execution id="afc4f2d3-fa30-4102-84b9-164c160d2552" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.FakeDispatcherTests" name="FakeDispatcher_ReturnsDefaultForUnregisteredRequest" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.BehaviorTests.LogBehavior_DoesNotAffectResult" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="361b4c7b-bb03-975b-a9a4-b5c14b669937">
+      <Execution id="2a86db2c-d371-4924-8795-8fa0b57164fe" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.BehaviorTests" name="LogBehavior_DoesNotAffectResult" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.BehaviorTests.ValidationBehavior_PassesWhenValidatorsPass" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="e81a8697-869c-d876-4004-04c1b25e7658">
+      <Execution id="b6bdfdfc-644d-4312-9696-325c53c70f36" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.BehaviorTests" name="ValidationBehavior_PassesWhenValidatorsPass" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.ResultTests.ImplicitConversion_FromError" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="7a50c891-c83d-5d81-57f5-740069b1984f">
+      <Execution id="693e432c-b9cc-4522-b598-b96f0f02cd39" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.ResultTests" name="ImplicitConversion_FromError" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.ResultTests.Map_TransformsValueOnSuccess" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="1981bcd1-1513-59a3-0565-24ba9e56639a">
+      <Execution id="b20b9d91-f3ca-4c88-b556-741bb9ab0905" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.ResultTests" name="Map_TransformsValueOnSuccess" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.ResultTests.Bind_ShortCircuitsOnFailure" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="6ea2aeb8-cb4d-d9df-cd3e-739851e60a2c">
+      <Execution id="ec577757-ce9b-4520-9730-31a83daf8c88" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.ResultTests" name="Bind_ShortCircuitsOnFailure" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.DecoratorTests.WithRetry_DispatchesInnerRequest" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="55bfc73b-e07a-c3ab-5ccf-809e8bee09c2">
+      <Execution id="5a310c26-081b-4fe8-b2a9-99e67e8e1c4b" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.DecoratorTests" name="WithRetry_DispatchesInnerRequest" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.ErrorTests.Internal_SetsInternalType" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="b96510e8-879d-408d-a078-950dbf6ccd6b">
+      <Execution id="26543b21-8e40-4897-ae42-302a2ac7d116" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.ErrorTests" name="Internal_SetsInternalType" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.DebugabilityTests.MediaxDispatcher_DoesNotHaveCompilerGeneratedAttribute" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="185f4ee2-5818-0776-682f-d0caa5c97284">
+      <Execution id="e27b4189-c978-49d2-b4f5-b63cccab9e8d" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.DebugabilityTests" name="MediaxDispatcher_DoesNotHaveCompilerGeneratedAttribute" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.ResultTests.Ok_CreatesSuccessResult" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="8801b016-3cef-b69c-0cb3-62205e01eaca">
+      <Execution id="7530c9bc-f875-46a9-913a-f61f582b000d" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.ResultTests" name="Ok_CreatesSuccessResult" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.DebugabilityTests.StackTrace_WhenHandlerThrows_ContainsHandlerClassName" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="a4866cef-6841-9281-2d3f-8ae642a04590">
+      <Execution id="9eaba8e1-1b76-4525-b2ad-c45cd92a0ea6" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.DebugabilityTests" name="StackTrace_WhenHandlerThrows_ContainsHandlerClassName" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.DispatchTests.Dispatch_Command_ReturnsSum" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="f5ded6f3-3095-9752-4f5b-4f9ba465b7b3">
+      <Execution id="30de475c-b669-45da-9e82-198354d6e301" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.DispatchTests" name="Dispatch_Command_ReturnsSum" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.ResultTests.Fail_CreatesFailureResult" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="5efb6f80-d5d5-e8ed-1361-0aee58377ffc">
+      <Execution id="3373e056-ee8b-4419-beaa-5e8708c9782d" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.ResultTests" name="Fail_CreatesFailureResult" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.DebugabilityTests.PlumbingMethods_HaveDebuggerStepThroughAttribute(methodName: &quot;Publish&quot;)" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="7cfaa768-8331-fb80-8dc7-2cac329179c5">
+      <Execution id="5c92076e-f6bd-4d06-9137-74498603f186" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.DebugabilityTests" name="PlumbingMethods_HaveDebuggerStepThroughAttribute" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.DebugabilityTests.PlumbingMethods_HaveDebuggerStepThroughAttribute(methodName: &quot;Dispatch&quot;)" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="d2707c42-9988-e247-e2a9-13e0d2671bf8">
+      <Execution id="a8be028c-df75-48bf-a037-4097ad13ecc4" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.DebugabilityTests" name="PlumbingMethods_HaveDebuggerStepThroughAttribute" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.FakeDispatcherTests.FakeDispatcher_Returns_FactoryValue" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="353b0a2e-cd01-a0cd-1c34-ad6c1690a636">
+      <Execution id="5579e62e-0937-4cf6-bafa-20aea6b86c66" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.FakeDispatcherTests" name="FakeDispatcher_Returns_FactoryValue" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.DebugabilityTests.MediaxStaticHandlers_HasCompilerGeneratedAttribute" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="f686e3bf-9852-4dfd-9ce7-cea92886cd03">
+      <Execution id="36589d4a-dfc1-4f35-8287-916c0835bdd4" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.DebugabilityTests" name="MediaxStaticHandlers_HasCompilerGeneratedAttribute" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.DecoratorTests.WithRetry_WrapsRequest_InRetryDecorator" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="66ca53d7-7e82-5d5f-cfad-f7ee01a684c8">
+      <Execution id="20a10824-cfbc-4df6-967c-431ccb2d04c3" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.DecoratorTests" name="WithRetry_WrapsRequest_InRetryDecorator" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.DecoratorTests.WithTimeout_WrapsRequest_InTimeoutDecorator" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="aaaceb3a-c221-364c-dc5d-44bd9838dfaa">
+      <Execution id="87e9d04c-df95-4f2a-953c-06cacd9de38c" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.DecoratorTests" name="WithTimeout_WrapsRequest_InTimeoutDecorator" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.DebugabilityTests.NamedDispatchMethods_DoNotHaveDebuggerStepThrough" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="352f126e-7407-f197-a0c0-cbf589277771">
+      <Execution id="fc5d0f52-4a26-4897-a7e0-9187157cff25" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.DebugabilityTests" name="NamedDispatchMethods_DoNotHaveDebuggerStepThrough" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.DebugabilityTests.GeneratedDispatcher_HasNoIndexBasedDispatchMethod" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="a99058aa-5b0c-1d2e-5871-bada5aa27a1f">
+      <Execution id="7d52ec2b-84d1-48de-95de-2cf053aeeabb" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.DebugabilityTests" name="GeneratedDispatcher_HasNoIndexBasedDispatchMethod" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.ErrorTests.DefaultMessage_GeneratedWhenNullPassed" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="a2187dde-7c1b-c5fb-4e10-3a5964980b06">
+      <Execution id="388cc045-25d0-4540-b6d1-afbbd859c832" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.ErrorTests" name="DefaultMessage_GeneratedWhenNullPassed" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.DebugabilityTests.CastWrapperMethods_HaveDebuggerStepThrough" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="ff9d4728-72b7-ffef-b0d2-da3fbbf96113">
+      <Execution id="76f2162a-d613-4506-ace6-33ad1a7c7854" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.DebugabilityTests" name="CastWrapperMethods_HaveDebuggerStepThrough" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.BehaviorTests.ValidationBehavior_ReturnsValidationError_WhenValidatorFails" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="99beb980-285b-eda1-dea4-4cdbb8932c22">
+      <Execution id="60a685a0-a6dc-490b-8fcd-4e3845b97ce8" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.BehaviorTests" name="ValidationBehavior_ReturnsValidationError_WhenValidatorFails" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.AdvancedGeneratorTests.ScopedHandler_UsingStatement_DisposesAfterSend" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="6b8b80a9-33ce-dcb8-0668-e9e9cf161c73">
+      <Execution id="cbba9f11-b6d8-4a99-858b-3c469da643ac" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.AdvancedGeneratorTests" name="ScopedHandler_UsingStatement_DisposesAfterSend" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.DispatchTests.Dispatch_Query_ReturnsEchoedMessage" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="5b87444b-a07e-7ba3-fdcc-b6c4ba1f9b0a">
+      <Execution id="31210d60-74ca-4426-83db-1f3ecd272ca5" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.DispatchTests" name="Dispatch_Query_ReturnsEchoedMessage" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.ErrorTests.Conflict_SetsConflictType" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="d5c31177-c6e4-c783-ab62-a7202e3f5c8e">
+      <Execution id="ee4ebb99-a125-4cfc-8faa-dc650772ab2a" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.ErrorTests" name="Conflict_SetsConflictType" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.DebugabilityTests.GeneratedDispatcher_AllHandlersHaveNamedMethods" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="21409ba4-0a8f-3d5b-c964-dfd0b8704934">
+      <Execution id="5b8874f3-20e6-4308-9516-90e39be4332a" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.DebugabilityTests" name="GeneratedDispatcher_AllHandlersHaveNamedMethods" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.FakeDispatcherTests.FakeDispatcher_TracksDispatchedRequests" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="d979fe0f-f97d-efb2-8973-86ae03c79f77">
+      <Execution id="43bef276-63d3-426d-8756-cef85effaa4a" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.FakeDispatcherTests" name="FakeDispatcher_TracksDispatchedRequests" />
+    </UnitTest>
+    <UnitTest name="Mediax.Tests.DispatchTests.Dispatch_UnknownRequest_ThrowsKeyNotFoundException" storage="c:\users\reichert\desktop\mediax\tests\mediax.tests\bin\debug\net10.0\mediax.tests.dll" id="abd651c7-60b4-0b9c-e6e6-fb6a0515c0f1">
+      <Execution id="152cb31e-923d-4922-bc47-f20b79e1f77e" />
+      <TestMethod codeBase="C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\bin\Debug\net10.0\Mediax.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Mediax.Tests.DispatchTests" name="Dispatch_UnknownRequest_ThrowsKeyNotFoundException" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="22a724bc-d757-801a-1d1e-bc20290b5da3" executionId="bc3dba88-9ea0-41b1-aaba-3eb78d5fa09c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a4866cef-6841-9281-2d3f-8ae642a04590" executionId="9eaba8e1-1b76-4525-b2ad-c45cd92a0ea6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b96510e8-879d-408d-a078-950dbf6ccd6b" executionId="26543b21-8e40-4897-ae42-302a2ac7d116" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1981bcd1-1513-59a3-0565-24ba9e56639a" executionId="b20b9d91-f3ca-4c88-b556-741bb9ab0905" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e81a8697-869c-d876-4004-04c1b25e7658" executionId="b6bdfdfc-644d-4312-9696-325c53c70f36" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="185f4ee2-5818-0776-682f-d0caa5c97284" executionId="e27b4189-c978-49d2-b4f5-b63cccab9e8d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cd30d56e-a0d3-7eb4-b3df-2114a5188e59" executionId="7d3c6ef0-9ec8-4779-b2b5-26cc4d16e70d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ed2f7708-6751-ca5a-1133-2841f261112e" executionId="5464e73d-2256-4dbd-91a0-baafb6501378" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c4739169-40a5-55fa-cf5c-7951bc54fa9b" executionId="178c86d4-4733-4e73-a42d-644e789b437f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5ef257e5-e761-7618-e981-ead033c7978a" executionId="80638bee-1d90-4f69-bcda-68de06df2310" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8b2250b3-0f1e-7788-5bb5-e65e5243ce8e" executionId="8dda8e60-65cc-4522-9d94-c5feb6cca67d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d2707c42-9988-e247-e2a9-13e0d2671bf8" executionId="a8be028c-df75-48bf-a037-4097ad13ecc4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="74c21ce1-f578-bb20-68d3-645ac6415a5d" executionId="afb44b72-9d8d-437d-a62a-e1d2c489aa18" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4e9bfd20-0e44-520c-5aaf-94678020fb79" executionId="adaf106a-4d37-4732-aa17-dee074324921" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="99beb980-285b-eda1-dea4-4cdbb8932c22" executionId="60a685a0-a6dc-490b-8fcd-4e3845b97ce8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a99058aa-5b0c-1d2e-5871-bada5aa27a1f" executionId="7d52ec2b-84d1-48de-95de-2cf053aeeabb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6ea2aeb8-cb4d-d9df-cd3e-739851e60a2c" executionId="ec577757-ce9b-4520-9730-31a83daf8c88" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="46fb776e-9f92-0dc8-a4aa-66ca8effc894" executionId="fe7741d4-a01e-4d5e-9248-3029370284fe" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f686e3bf-9852-4dfd-9ce7-cea92886cd03" executionId="36589d4a-dfc1-4f35-8287-916c0835bdd4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7826fe47-b40e-a848-9ed2-0875e9bada78" executionId="19e50e50-ad64-4307-9480-dfb454701b6f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ff9d4728-72b7-ffef-b0d2-da3fbbf96113" executionId="76f2162a-d613-4506-ace6-33ad1a7c7854" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="55bfc73b-e07a-c3ab-5ccf-809e8bee09c2" executionId="5a310c26-081b-4fe8-b2a9-99e67e8e1c4b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2a6593ff-96af-8cf0-449d-7b8c38fc02c4" executionId="ab643ad7-3b06-4c79-a4ea-759d5ed24dcb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d979fe0f-f97d-efb2-8973-86ae03c79f77" executionId="43bef276-63d3-426d-8756-cef85effaa4a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="57cc85f3-432b-c5be-d6b1-723bd7440b96" executionId="f7f74bea-f24f-4c1e-9947-5cb23d4596fd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="66ca53d7-7e82-5d5f-cfad-f7ee01a684c8" executionId="20a10824-cfbc-4df6-967c-431ccb2d04c3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1b9d6369-04cc-04c5-6ab2-e7e6b0ab0c5a" executionId="d81747a8-1f7e-428f-8ea0-7ed07197d8e2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8801b016-3cef-b69c-0cb3-62205e01eaca" executionId="7530c9bc-f875-46a9-913a-f61f582b000d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a2187dde-7c1b-c5fb-4e10-3a5964980b06" executionId="388cc045-25d0-4540-b6d1-afbbd859c832" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f5ded6f3-3095-9752-4f5b-4f9ba465b7b3" executionId="30de475c-b669-45da-9e82-198354d6e301" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f545e4ce-e875-1ea7-16eb-d78377397641" executionId="066d7a58-8bd5-4283-adfd-70f5d51f954b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="634aae4b-e378-5508-52a5-47bc673b20ea" executionId="fbcf8ca9-c1af-45b5-80cd-0118e14155ff" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="352f126e-7407-f197-a0c0-cbf589277771" executionId="fc5d0f52-4a26-4897-a7e0-9187157cff25" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="361b4c7b-bb03-975b-a9a4-b5c14b669937" executionId="2a86db2c-d371-4924-8795-8fa0b57164fe" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5b87444b-a07e-7ba3-fdcc-b6c4ba1f9b0a" executionId="31210d60-74ca-4426-83db-1f3ecd272ca5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d5c31177-c6e4-c783-ab62-a7202e3f5c8e" executionId="ee4ebb99-a125-4cfc-8faa-dc650772ab2a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="21409ba4-0a8f-3d5b-c964-dfd0b8704934" executionId="5b8874f3-20e6-4308-9516-90e39be4332a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7cfaa768-8331-fb80-8dc7-2cac329179c5" executionId="5c92076e-f6bd-4d06-9137-74498603f186" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="eb1f6a1f-fe20-34ae-4a03-45d5ac1fcd4c" executionId="c9f1bb2c-3086-4586-944d-b8179433e65e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="728cbc1e-917a-92a1-a484-762afd2baffa" executionId="a9712eaf-63ec-4074-a1a1-39b4d9273dbe" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7ae990ad-e3a4-c985-bc07-83d3e35f723d" executionId="bc4d1d99-40e6-4074-9770-266c54a1e11e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="abd651c7-60b4-0b9c-e6e6-fb6a0515c0f1" executionId="152cb31e-923d-4922-bc47-f20b79e1f77e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e62cd454-7839-15be-3c5e-d09f701a7b71" executionId="7d2f6669-ed45-4458-802f-d462907d2a7c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="353b0a2e-cd01-a0cd-1c34-ad6c1690a636" executionId="5579e62e-0937-4cf6-bafa-20aea6b86c66" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5efb6f80-d5d5-e8ed-1361-0aee58377ffc" executionId="3373e056-ee8b-4419-beaa-5e8708c9782d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="aaaceb3a-c221-364c-dc5d-44bd9838dfaa" executionId="87e9d04c-df95-4f2a-953c-06cacd9de38c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7a50c891-c83d-5d81-57f5-740069b1984f" executionId="693e432c-b9cc-4522-b598-b96f0f02cd39" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e5bbd0f5-d880-f15b-28df-0e6869b765e2" executionId="d997cc3b-ec96-4c6c-b9c4-3059cc246937" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6b8b80a9-33ce-dcb8-0668-e9e9cf161c73" executionId="cbba9f11-b6d8-4a99-858b-3c469da643ac" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="47651d43-dc2e-db27-1273-c893a8f7d738" executionId="afc4f2d3-fa30-4102-84b9-164c160d2552" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Resultados que não estão em uma lista" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Todos os resultados carregados" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="50" executed="50" passed="48" failed="2" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 10.0.3)&#xD;
+[xUnit.net 00:00:00.05]   Discovering: Mediax.Tests&#xD;
+[xUnit.net 00:00:00.08]   Discovered:  Mediax.Tests&#xD;
+[xUnit.net 00:00:00.08]   Starting:    Mediax.Tests&#xD;
+     Warning:&#xD;
+     The component "Fluent Assertions" is governed by the rules defined in the Xceed License Agreement and&#xD;
+     the Xceed Fluent Assertions Community License. You may use Fluent Assertions free of charge for&#xD;
+     non-commercial use only. An active subscription is required to use Fluent Assertions for commercial use.&#xD;
+     Please contact Xceed Sales mailto:sales@xceed.com to acquire a subscription at a very low cost.&#xD;
+     A paid commercial license supports the development and continued increasing support of&#xD;
+     Fluent Assertions users under both commercial and community licenses. Help us&#xD;
+     keep Fluent Assertions at the forefront of unit testing.&#xD;
+     For more information, visit https://xceed.com/products/unit-testing/fluent-assertions/&#xD;
+[xUnit.net 00:00:00.26]       Expected method.GetCustomAttribute&lt;DebuggerStepThroughAttribute&gt;() to be &lt;null&gt; because Dispatch_TrackedScopedHandler should NOT have [DebuggerStepThrough] — it is a breakpoint target, but found System.Diagnostics.DebuggerStepThroughAttribute&#xD;
+[xUnit.net 00:00:00.26]       {&#xD;
+[xUnit.net 00:00:00.26]           TypeId = System.Diagnostics.DebuggerStepThroughAttribute&#xD;
+[xUnit.net 00:00:00.26]       }.&#xD;
+[xUnit.net 00:00:00.26]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.26]            at FluentAssertions.Execution.LateBoundTestFramework.Throw(String message)&#xD;
+[xUnit.net 00:00:00.26]            at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)&#xD;
+[xUnit.net 00:00:00.26]            at FluentAssertions.Execution.AssertionScope.AddPreFormattedFailure(String formattedFailureMessage)&#xD;
+[xUnit.net 00:00:00.26]            at FluentAssertions.Execution.AssertionChain.FailWith(Func`1 getFailureReason)&#xD;
+[xUnit.net 00:00:00.26]            at FluentAssertions.Execution.AssertionChain.FailWith(Func`1 getFailureReason)&#xD;
+[xUnit.net 00:00:00.26]            at FluentAssertions.Execution.AssertionChain.FailWith(String message, Object[] args)&#xD;
+[xUnit.net 00:00:00.26]            at FluentAssertions.Primitives.ReferenceTypeAssertions`2.BeNull(String because, Object[] becauseArgs)&#xD;
+[xUnit.net 00:00:00.26]         C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\DebugabilityTests.cs(110,0): at Mediax.Tests.DebugabilityTests.NamedDispatchMethods_DoNotHaveDebuggerStepThrough()&#xD;
+[xUnit.net 00:00:00.26]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)&#xD;
+[xUnit.net 00:00:00.26]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:00.26]       System.Reflection.AmbiguousMatchException : Multiple custom attributes of the same type 'System.Diagnostics.DebuggerStepThroughAttribute' found.&#xD;
+[xUnit.net 00:00:00.26]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.26]            at System.Attribute.GetCustomAttribute(MemberInfo element, Type attributeType, Boolean inherit)&#xD;
+[xUnit.net 00:00:00.26]            at System.Reflection.CustomAttributeExtensions.GetCustomAttribute[T](MemberInfo element)&#xD;
+[xUnit.net 00:00:00.26]         C:\Users\reichert\Desktop\mediax\tests\Mediax.Tests\DebugabilityTests.cs(95,0): at Mediax.Tests.DebugabilityTests.PlumbingMethods_HaveDebuggerStepThroughAttribute(String methodName)&#xD;
+[xUnit.net 00:00:00.26]            at InvokeStub_DebugabilityTests.PlumbingMethods_HaveDebuggerStepThroughAttribute(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.26]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.30]   Finished:    Mediax.Tests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="DESKTOP-N1G2M77" outcome="Error" timestamp="2026-03-17T21:27:33.7742039-03:00">
+        <Text>[xUnit.net 00:00:00.26]     Mediax.Tests.DebugabilityTests.NamedDispatchMethods_DoNotHaveDebuggerStepThrough [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-N1G2M77" outcome="Error" timestamp="2026-03-17T21:27:33.7848230-03:00">
+        <Text>[xUnit.net 00:00:00.26]     Mediax.Tests.DebugabilityTests.PlumbingMethods_HaveDebuggerStepThroughAttribute(methodName: "Publish") [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

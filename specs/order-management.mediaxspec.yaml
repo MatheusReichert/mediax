@@ -1,0 +1,765 @@
+mediaxspec: "0.1"
+
+info:
+  title: "Order Management Mediator Contracts"
+  version: "2.4.0"
+  description: |
+    Catálogo completo de contratos CQRS para o bounded context de Order Management.
+    Este documento é a fonte da verdade para todas as mensagens despachável.
+  contact:
+    name: "Platform Engineering"
+    email: "platform@example.com"
+  license:
+    name: "MIT"
+
+servers:
+  - id: orders-service
+    description: "Order Management microservice"
+    runtime: dotnet10
+    assembly: "OrderManagement.Application"
+    framework: mediax
+    x-mediax-version: "0.1.0"
+    x-mediax-registration: "DispatchTable.RegisterAll(services)"
+
+# ── Error Catalog ──────────────────────────────────────────────────────────────
+
+errors:
+
+  OrderValidationFailed:
+    kind: Validation
+    code: "ORDER_VALIDATION_FAILED"
+    message: "One or more fields are invalid"
+    httpEquivalent: 422
+    payload:
+      $ref: "#/schemas/ValidationErrorDetail"
+    retryable: false
+
+  CustomerNotFound:
+    kind: NotFound
+    code: "CUSTOMER_NOT_FOUND"
+    message: "Customer does not exist"
+    httpEquivalent: 404
+    retryable: false
+
+  OrderNotFound:
+    kind: NotFound
+    code: "ORDER_NOT_FOUND"
+    message: "Order does not exist"
+    httpEquivalent: 404
+    retryable: false
+
+  DuplicateOrder:
+    kind: Conflict
+    code: "DUPLICATE_ORDER"
+    message: "Order with this idempotency key already exists"
+    httpEquivalent: 409
+    retryable: false
+
+  OrderAlreadyCancelled:
+    kind: Conflict
+    code: "ORDER_ALREADY_CANCELLED"
+    message: "Cannot modify a cancelled order"
+    httpEquivalent: 409
+    retryable: false
+
+  OrderAccessDenied:
+    kind: Forbidden
+    code: "ORDER_ACCESS_DENIED"
+    message: "Caller does not have access to this order"
+    httpEquivalent: 403
+    retryable: false
+
+  TransientDatabase:
+    kind: Transient
+    code: "TRANSIENT_DB"
+    message: "Transient database issue — safe to retry"
+    httpEquivalent: 503
+    retryable: true
+
+  InternalError:
+    kind: Internal
+    code: "INTERNAL"
+    message: "An unexpected error occurred"
+    httpEquivalent: 500
+    retryable: false
+
+# ── Schemas ────────────────────────────────────────────────────────────────────
+
+schemas:
+
+  # Value types
+
+  OrderId:
+    type: object
+    required: [orderId]
+    properties:
+      orderId:
+        type: string
+        format: uuid
+
+  Money:
+    type: object
+    required: [amount, currency]
+    properties:
+      amount:
+        type: number
+        format: decimal
+        minimum: 0
+      currency:
+        type: string
+        pattern: "^[A-Z]{3}$"
+        description: "ISO 4217 currency code"
+
+  Address:
+    type: object
+    required: [line1, city, country]
+    properties:
+      line1:
+        type: string
+      line2:
+        type: string
+        nullable: true
+      city:
+        type: string
+      postalCode:
+        type: string
+        nullable: true
+      country:
+        type: string
+        description: "ISO 3166-1 alpha-2 country code"
+        pattern: "^[A-Z]{2}$"
+
+  OrderStatus:
+    type: enum
+    enum: [Pending, Confirmed, Shipped, Delivered, Cancelled]
+
+  OrderLineItem:
+    type: object
+    required: [productId, quantity, unitPrice]
+    properties:
+      productId:
+        type: string
+      quantity:
+        type: integer
+        minimum: 1
+      unitPrice:
+        $ref: "#/schemas/Money"
+
+  ValidationErrorDetail:
+    type: object
+    required: [errors]
+    properties:
+      errors:
+        type: array
+        items:
+          type: object
+          required: [field, message]
+          properties:
+            field:
+              type: string
+            message:
+              type: string
+            code:
+              type: string
+              nullable: true
+
+  # Command payloads
+
+  PlaceOrderCommand:
+    type: object
+    description: "Payload para criar um novo pedido"
+    required: [customerId, items, idempotencyKey]
+    properties:
+      customerId:
+        type: string
+        format: uuid
+        x-mediax-sensitive: true
+      items:
+        type: array
+        items:
+          $ref: "#/schemas/OrderLineItem"
+        minItems: 1
+      shippingAddress:
+        $ref: "#/schemas/Address"
+        nullable: true
+      idempotencyKey:
+        type: string
+        format: uuid
+        description: "Chave gerada pelo cliente para deduplicação"
+    examples:
+      standard:
+        summary: "Pedido típico com dois itens"
+        value:
+          customerId: "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          idempotencyKey: "7c9e6679-7425-40de-944b-e07fc1f90ae7"
+          items:
+            - productId: "prod-001"
+              quantity: 2
+              unitPrice:
+                amount: 19.99
+                currency: "BRL"
+
+  CancelOrderCommand:
+    type: object
+    required: [orderId, reason]
+    properties:
+      orderId:
+        type: string
+        format: uuid
+      reason:
+        type: string
+        maxLength: 500
+
+  # Query payloads
+
+  GetOrderByIdQuery:
+    type: object
+    required: [orderId]
+    properties:
+      orderId:
+        type: string
+        format: uuid
+
+  ListOrdersQuery:
+    type: object
+    properties:
+      customerId:
+        type: string
+        format: uuid
+        nullable: true
+      status:
+        $ref: "#/schemas/OrderStatus"
+        nullable: true
+      pageNumber:
+        type: integer
+        minimum: 1
+        default: 1
+      pageSize:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+
+  # Response payloads
+
+  OrderDetail:
+    type: object
+    required: [orderId, customerId, status, items, createdAt]
+    properties:
+      orderId:
+        type: string
+        format: uuid
+      customerId:
+        type: string
+        format: uuid
+        x-mediax-sensitive: true
+      status:
+        $ref: "#/schemas/OrderStatus"
+      items:
+        type: array
+        items:
+          $ref: "#/schemas/OrderLineItem"
+      shippingAddress:
+        $ref: "#/schemas/Address"
+        nullable: true
+      total:
+        $ref: "#/schemas/Money"
+      createdAt:
+        type: string
+        format: date-time
+      updatedAt:
+        type: string
+        format: date-time
+        nullable: true
+
+  OrderSummary:
+    type: object
+    required: [orderId, status, total, createdAt]
+    properties:
+      orderId:
+        type: string
+        format: uuid
+      status:
+        $ref: "#/schemas/OrderStatus"
+      total:
+        $ref: "#/schemas/Money"
+      createdAt:
+        type: string
+        format: date-time
+
+  PagedResult:
+    type: object
+    required: [items, totalCount, pageNumber, pageSize]
+    properties:
+      items:
+        type: array
+        items:
+          $ref: "#/schemas/OrderSummary"
+      totalCount:
+        type: integer
+      pageNumber:
+        type: integer
+      pageSize:
+        type: integer
+      hasNextPage:
+        type: boolean
+
+  # Event payloads
+
+  OrderPlacedEvent:
+    type: object
+    required: [orderId, customerId, occurredAt]
+    properties:
+      orderId:
+        type: string
+        format: uuid
+      customerId:
+        type: string
+        format: uuid
+      total:
+        $ref: "#/schemas/Money"
+      occurredAt:
+        type: string
+        format: date-time
+
+  OrderCancelledEvent:
+    type: object
+    required: [orderId, reason, occurredAt]
+    properties:
+      orderId:
+        type: string
+        format: uuid
+      reason:
+        type: string
+      cancelledBy:
+        type: string
+        format: uuid
+        nullable: true
+      occurredAt:
+        type: string
+        format: date-time
+
+  OrderShippedEvent:
+    type: object
+    required: [orderId, trackingNumber, carrier, shippedAt]
+    properties:
+      orderId:
+        type: string
+        format: uuid
+      trackingNumber:
+        type: string
+      carrier:
+        type: string
+      shippedAt:
+        type: string
+        format: date-time
+
+  # Stream payloads
+
+  StreamOrderHistoryRequest:
+    type: object
+    required: [customerId]
+    properties:
+      customerId:
+        type: string
+        format: uuid
+      fromDate:
+        type: string
+        format: date
+        nullable: true
+      toDate:
+        type: string
+        format: date
+        nullable: true
+
+# ── Pipelines ──────────────────────────────────────────────────────────────────
+
+pipelines:
+
+  WriteCommandPipeline:
+    description: "Pipeline padrão para todos os commands de escrita"
+    behaviors:
+      - name: Logging
+        typeName: "LogBehavior"
+        order: 10
+        description: "Emite log estruturado na entrada/saída com correlation ID"
+      - name: Validation
+        typeName: "ValidationBehavior"
+        order: 20
+        description: "Executa todos os IValidator<TRequest> registrados"
+        parameters:
+          stopOnFirstFailure: false
+      - name: UnitOfWork
+        typeName: "TransactionBehavior"
+        order: 30
+        description: "Envolve o handler em uma transação EF Core"
+      - name: DomainEvents
+        typeName: "DomainEventDispatchBehavior"
+        order: 40
+        description: "Coleta e despacha domain events após o commit do handler"
+        applyTo: [command]
+
+  ReadQueryPipeline:
+    description: "Pipeline para queries com cache distribuído"
+    behaviors:
+      - name: Logging
+        typeName: "LogBehavior"
+        order: 10
+      - name: Cache
+        typeName: "CacheBehavior"
+        order: 20
+        description: "Cache distribuído (Redis)"
+        parameters:
+          ttlSeconds: 300
+          varyBy: [payload]
+          keyPrefix: "orders:"
+      - name: Validation
+        typeName: "ValidationBehavior"
+        order: 30
+
+  EventHandlerPipeline:
+    description: "Pipeline leve para event handlers — sem transação"
+    behaviors:
+      - name: Logging
+        typeName: "LogBehavior"
+        order: 10
+      - name: Retry
+        typeName: "PollyBehavior"
+        order: 20
+        parameters:
+          maxAttempts: 3
+          backoff: exponential
+          delay: "PT2S"
+
+  BackgroundJobPipeline:
+    description: "Pipeline para jobs em background e tasks administrativas"
+    behaviors:
+      - name: Logging
+        typeName: "LogBehavior"
+        order: 10
+      - name: CircuitBreaker
+        typeName: "CircuitBreakerBehavior"
+        order: 20
+        parameters:
+          failureThreshold: 5
+          breakDuration: "PT60S"
+
+# ── Tags ───────────────────────────────────────────────────────────────────────
+
+tags:
+  - name: orders
+    description: "Operações do ciclo de vida de pedidos"
+  - name: write
+    description: "Operações de escrita (commands)"
+  - name: read
+    description: "Operações de leitura (queries)"
+  - name: events
+    description: "Domain events"
+  - name: streaming
+    description: "Operações de streaming de longa duração"
+  - name: admin
+    description: "Operações administrativas / internas"
+
+# ── Requests ───────────────────────────────────────────────────────────────────
+
+requests:
+
+  # ── Commands ─────────────────────────────────────────────────────────────────
+
+  PlaceOrder:
+    kind: command
+    summary: "Criar um novo pedido de cliente"
+    description: |
+      Cria um pedido no estado `Pending`. Publica o domain event `OrderPlaced`
+      após persistência bem-sucedida. Idempotente via `idempotencyKey`.
+    tags: [orders, write]
+    payload:
+      $ref: "#/schemas/PlaceOrderCommand"
+    response:
+      type: result
+      value:
+        $ref: "#/schemas/OrderId"
+    errors:
+      - $ref: "#/errors/OrderValidationFailed"
+      - $ref: "#/errors/CustomerNotFound"
+      - $ref: "#/errors/DuplicateOrder"
+      - $ref: "#/errors/TransientDatabase"
+    handler:
+      lifetime: scoped
+      typeName: "PlaceOrderHandler"
+      namespace: "OrderManagement.Application.Orders.Commands"
+    pipeline:
+      $ref: "#/pipelines/WriteCommandPipeline"
+    decorators:
+      - kind: timeout
+        duration: "PT10S"
+      - kind: retry
+        maxAttempts: 3
+        backoff: exponential
+        delay: "PT1S"
+        retryOn:
+          - $ref: "#/errors/TransientDatabase"
+    processors:
+      pre:
+        - name: IdempotencyCheck
+          typeName: "IdempotencyPreProcessor"
+          order: 1
+          description: "Short-circuit se a chave de idempotência já foi processada"
+      post:
+        - name: OutboxRelay
+          typeName: "OutboxRelayPostProcessor"
+          order: 1
+          description: "Relays domain events para a tabela de outbox"
+    x-mediax-idempotent: true
+    x-mediax-sla-ms: 150
+    x-docs-since: "1.0.0"
+
+  CancelOrder:
+    kind: command
+    summary: "Cancelar um pedido existente"
+    description: |
+      Transiciona um pedido para o estado `Cancelled`. Válido somente a partir
+      dos estados `Pending` ou `Confirmed`. Publica `OrderCancelled`.
+    tags: [orders, write]
+    payload:
+      $ref: "#/schemas/CancelOrderCommand"
+    response:
+      type: void
+    errors:
+      - $ref: "#/errors/OrderNotFound"
+      - $ref: "#/errors/OrderAlreadyCancelled"
+      - $ref: "#/errors/OrderAccessDenied"
+      - $ref: "#/errors/OrderValidationFailed"
+    handler:
+      lifetime: scoped
+      typeName: "CancelOrderHandler"
+      namespace: "OrderManagement.Application.Orders.Commands"
+    pipeline:
+      $ref: "#/pipelines/WriteCommandPipeline"
+    decorators:
+      - kind: timeout
+        duration: "PT5S"
+    dispatch:
+      mode: static
+    x-mediax-sla-ms: 100
+    x-docs-since: "1.0.0"
+
+  RebuildOrderReadModel:
+    kind: command
+    summary: "Admin: reconstruir o read model a partir dos eventos"
+    description: |
+      Replay todos os eventos de pedido e reconstrói o read model desnormalizado.
+      Operação longa — use timeout generoso.
+    tags: [orders, admin]
+    payload:
+      type: object
+      properties:
+        fromEventId:
+          type: integer
+          nullable: true
+          description: "Retomar a partir deste sequence number de evento"
+    response:
+      type: result
+      value:
+        type: object
+        properties:
+          eventsReplayed:
+            type: integer
+          durationMs:
+            type: integer
+    handler:
+      lifetime: singleton
+      typeName: "RebuildOrderReadModelHandler"
+      namespace: "OrderManagement.Application.Orders.Admin"
+    pipeline:
+      $ref: "#/pipelines/BackgroundJobPipeline"
+    decorators:
+      - kind: timeout
+        duration: "PT10M"
+    x-mediax-requires-role: "admin"
+    x-docs-since: "2.0.0"
+
+  # ── Queries ──────────────────────────────────────────────────────────────────
+
+  GetOrderById:
+    kind: query
+    summary: "Buscar um pedido pelo ID"
+    tags: [orders, read]
+    payload:
+      $ref: "#/schemas/GetOrderByIdQuery"
+    response:
+      type: result
+      value:
+        $ref: "#/schemas/OrderDetail"
+    errors:
+      - $ref: "#/errors/OrderNotFound"
+      - $ref: "#/errors/OrderAccessDenied"
+    handler:
+      lifetime: scoped
+      typeName: "GetOrderByIdHandler"
+      namespace: "OrderManagement.Application.Orders.Queries"
+    pipeline:
+      $ref: "#/pipelines/ReadQueryPipeline"
+    decorators:
+      - kind: timeout
+        duration: "PT3S"
+    processors:
+      pre:
+        - name: AuditAccess
+          typeName: "DataAccessAuditPreProcessor"
+          order: 1
+          description: "Registra acesso de leitura para compliance"
+    x-mediax-sla-ms: 50
+    x-docs-since: "1.0.0"
+
+  ListOrders:
+    kind: query
+    summary: "Lista paginada de pedidos com filtros opcionais"
+    tags: [orders, read]
+    payload:
+      $ref: "#/schemas/ListOrdersQuery"
+    response:
+      type: result
+      value:
+        $ref: "#/schemas/PagedResult"
+    errors:
+      - $ref: "#/errors/OrderValidationFailed"
+    handler:
+      lifetime: scoped
+      typeName: "ListOrdersHandler"
+      namespace: "OrderManagement.Application.Orders.Queries"
+    pipeline:
+      $ref: "#/pipelines/ReadQueryPipeline"
+    decorators:
+      - kind: timeout
+        duration: "PT5S"
+      - kind: cache
+        duration: "PT1M"
+    x-mediax-sla-ms: 100
+    x-docs-since: "1.0.0"
+
+  # ── Events ───────────────────────────────────────────────────────────────────
+
+  OrderPlaced:
+    kind: event
+    summary: "Publicado quando um pedido é criado"
+    description: |
+      Todos os handlers devem ser idempotentes. Este evento pode ser entregue
+      mais de uma vez devido ao mecanismo de retry do outbox relay.
+    tags: [orders, events]
+    payload:
+      $ref: "#/schemas/OrderPlacedEvent"
+    event:
+      strategy: parallelWhenAll
+      ordering: partitioned
+      deduplication:
+        enabled: true
+        window: "PT5M"
+        keyExpression: "payload.orderId"
+      handlers:
+        - name: SendConfirmationEmail
+          typeName: "SendOrderConfirmationEmailHandler"
+          namespace: "OrderManagement.Application.Events"
+          description: "Envia e-mail transacional via SendGrid"
+          pipeline:
+            $ref: "#/pipelines/EventHandlerPipeline"
+          x-mediax-consumer-group: "notifications"
+        - name: ReserveInventory
+          typeName: "ReserveInventoryOnOrderPlacedHandler"
+          namespace: "Inventory.Application.Events"
+          description: "Decrementa o inventário reservado para os produtos pedidos"
+          pipeline:
+            $ref: "#/pipelines/EventHandlerPipeline"
+          x-mediax-consumer-group: "inventory"
+        - name: UpdateAnalytics
+          typeName: "UpdateOrderAnalyticsHandler"
+          namespace: "Analytics.Application.Events"
+          description: "Atualiza o dashboard de analytics em tempo real"
+          pipeline:
+            $ref: "#/pipelines/EventHandlerPipeline"
+          x-mediax-consumer-group: "analytics"
+    x-docs-since: "1.0.0"
+
+  OrderCancelled:
+    kind: event
+    summary: "Publicado quando um pedido é cancelado"
+    description: |
+      Handlers executados sequencialmente. Falha em ReleaseInventory
+      impede que RefundPayment seja executado.
+    tags: [orders, events]
+    payload:
+      $ref: "#/schemas/OrderCancelledEvent"
+    event:
+      strategy: sequential
+      ordering: none
+      deduplication:
+        enabled: true
+        window: "PT5M"
+        keyExpression: "payload.orderId"
+      handlers:
+        - name: ReleaseInventory
+          typeName: "ReleaseInventoryOnCancelHandler"
+          namespace: "Inventory.Application.Events"
+          description: "Libera o inventário reservado de volta ao disponível"
+        - name: RefundPayment
+          typeName: "RefundPaymentOnCancelHandler"
+          namespace: "Payments.Application.Events"
+          description: "Inicia reembolso se o pagamento foi capturado"
+    x-docs-since: "1.0.0"
+
+  OrderShipped:
+    kind: event
+    summary: "Publicado quando um pedido é marcado como enviado"
+    description: |
+      Fire-and-forget: o caller não aguarda os handlers.
+      Falhas são silenciosas para o produtor do evento.
+    tags: [orders, events]
+    payload:
+      $ref: "#/schemas/OrderShippedEvent"
+    event:
+      strategy: parallelFireAndForget
+      ordering: none
+      handlers:
+        - name: NotifyCustomer
+          typeName: "NotifyCustomerOfShipmentHandler"
+          namespace: "Notifications.Application.Events"
+          description: "Push notification + e-mail para o cliente"
+        - name: UpdateTrackingService
+          typeName: "UpdateExternalTrackingHandler"
+          namespace: "Shipping.Application.Events"
+          description: "Sincroniza com serviço externo de rastreamento"
+    x-docs-since: "1.5.0"
+
+  # ── Streams ──────────────────────────────────────────────────────────────────
+
+  StreamOrderHistory:
+    kind: stream
+    summary: "Stream do histórico completo de pedidos de um cliente"
+    description: |
+      Retorna `IAsyncEnumerable<OrderSummary>` ordenado por `createdAt` decrescente.
+      Suporta cancelamento. Use filtros de data para limitar o volume.
+    tags: [orders, streaming]
+    payload:
+      $ref: "#/schemas/StreamOrderHistoryRequest"
+    response:
+      type: stream
+      value:
+        $ref: "#/schemas/OrderSummary"
+    stream:
+      itemSchema:
+        $ref: "#/schemas/OrderSummary"
+      backpressure: bounded
+      bufferSize: 50
+      cancellable: true
+    errors:
+      - $ref: "#/errors/CustomerNotFound"
+      - $ref: "#/errors/OrderAccessDenied"
+    handler:
+      lifetime: scoped
+      typeName: "StreamOrderHistoryHandler"
+      namespace: "OrderManagement.Application.Orders.Queries"
+    decorators:
+      - kind: timeout
+        duration: "PT5M"
+    x-docs-since: "2.0.0"
+    x-mediax-stream-protocol: "grpc-server-streaming"

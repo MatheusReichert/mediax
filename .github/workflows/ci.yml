@@ -1,0 +1,120 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags:    ['v*']
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+env:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  DOTNET_NOLOGO: true
+  NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
+
+jobs:
+  # ──────────────────────────────────────────────
+  # Build & Test (all pushes + PRs)
+  # ──────────────────────────────────────────────
+  build:
+    name: Build & Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+          dotnet-quality: 'preview'
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.NUGET_PACKAGES }}
+          key: nuget-${{ hashFiles('**/*.csproj', '**/Directory.Packages.props') }}
+          restore-keys: nuget-
+
+      - name: Restore
+        run: dotnet restore Mediax.slnx
+
+      - name: Build
+        run: dotnet build Mediax.slnx --no-restore -c Release
+
+      - name: Test
+        run: >
+          dotnet test Mediax.slnx
+          --no-build -c Release
+          --logger "trx;LogFileName=results.trx"
+          --results-directory ./test-results
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: ./test-results/*.trx
+
+  # ──────────────────────────────────────────────
+  # Pack & Publish (only on version tags v*)
+  # ──────────────────────────────────────────────
+  publish:
+    name: Pack & Publish NuGet
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+          dotnet-quality: 'preview'
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.NUGET_PACKAGES }}
+          key: nuget-${{ hashFiles('**/*.csproj', '**/Directory.Packages.props') }}
+          restore-keys: nuget-
+
+      - name: Extract version from tag
+        id: version
+        # tag: v0.2.1 → VERSION=0.2.1
+        run: echo "VERSION=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Restore
+        run: dotnet restore Mediax.slnx
+
+      - name: Pack
+        run: >
+          dotnet pack Mediax.slnx
+          --no-restore -c Release
+          -p:PackageVersion=${{ steps.version.outputs.VERSION }}
+          -p:ContinuousIntegrationBuild=true
+          --output ./nupkgs
+
+      - name: Upload packages artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nupkgs-${{ steps.version.outputs.VERSION }}
+          path: ./nupkgs/*.nupkg
+
+      - name: Publish to NuGet.org
+        run: >
+          dotnet nuget push ./nupkgs/*.nupkg
+          --api-key ${{ secrets.NUGET_API_KEY }}
+          --source https://api.nuget.org/v3/index.json
+          --skip-duplicate

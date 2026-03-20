@@ -1,0 +1,45 @@
+<Project>
+  <!--
+    Shared NuGet metadata for all packable projects under src/.
+    PackageVersion is injected by CI: -p:PackageVersion=$(tag)
+    For local packs, falls back to the value below.
+  -->
+
+  <PropertyGroup>
+    <!-- Bumped manually for local dev packs; CI always overrides via tag. -->
+    <PackageVersion>0.1.0</PackageVersion>
+    <Authors>Mediax Contributors</Authors>
+    <Copyright>Copyright © 2025 Mediax Contributors</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/MatheusReichert/mediax</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/MatheusReichert/mediax</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>mediator;cqrs;source-generator;dotnet;result</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
+
+    <!-- Embed PDB symbols for Source Link debuggability -->
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+
+    <!-- Deterministic builds (set by CI via -p:ContinuousIntegrationBuild=true) -->
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+
+  <!-- Source Link: maps local paths to GitHub URLs for debugger step-into support -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub"
+                      Version="8.0.0"
+                      PrivateAssets="all"
+                      IncludeAssets="runtime; build; native; contentfiles; analyzers" />
+  </ItemGroup>
+
+  <!-- Bundle the repo README into every package -->
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)README.md"
+          Pack="true"
+          PackagePath="\" />
+  </ItemGroup>
+</Project>

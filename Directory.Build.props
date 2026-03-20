@@ -1,0 +1,34 @@
+<Project>
+
+  <!--
+    Analyzers installed globally across all projects (src, tests, benchmarks).
+    The SourceGenerator project opts out via its own <EnforceExtendedAnalyzerRules>
+    and uses Microsoft.CodeAnalysis.Analyzers instead.
+  -->
+
+  <PropertyGroup>
+    <!-- Treat all CA/MA warnings as warnings (not errors) so CI stays green
+         while still surfacing issues in the IDE. Promote to Error per-project
+         as the codebase matures. -->
+    <AnalysisMode>Recommended</AnalysisMode>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+  </PropertyGroup>
+
+  <!-- Skip analyzer packages on the SourceGenerator project — it has its own -->
+  <ItemGroup Condition="'$(MSBuildProjectName)' != 'Mediax.SourceGenerator'">
+    <!-- .NET Platform Analyzers: CA1xxx, CA2xxx, SYSLIB rules (ships with SDK,
+         pinning the version keeps behaviour reproducible across machines) -->
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers"
+                      Version="9.0.0"
+                      PrivateAssets="all"
+                      IncludeAssets="runtime; build; native; contentfiles; analyzers" />
+
+    <!-- Meziantou: ~500 extra rules beyond what NetAnalyzers covers —
+         performance, async, null-safety, string comparisons, etc. -->
+    <PackageReference Include="Meziantou.Analyzer"
+                      Version="2.0.201"
+                      PrivateAssets="all"
+                      IncludeAssets="runtime; build; native; contentfiles; analyzers" />
+  </ItemGroup>
+
+</Project>

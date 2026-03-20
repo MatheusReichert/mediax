@@ -1,0 +1,30 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+*.nupkg
+*.snupkg
+nupkgs/
+test-results/
+
+## BenchmarkDotNet
+BenchmarkDotNet.Artifacts/
+
+## Logs
+*.log
+build_output.txt
+
+## OS
+.DS_Store
+Thumbs.db
+
+## Rider / JetBrains
+.idea/
+
+## VS Code
+.vscode/
+
+## NuGet cache (local to CI, not needed in repo)
+.nuget/

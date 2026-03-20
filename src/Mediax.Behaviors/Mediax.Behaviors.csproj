@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>14</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsPackable>true</IsPackable>
+    <Description>Ready-to-use pipeline behaviors for Mediax: logging, tracing, validation (FluentValidation), caching, transactions, idempotency, circuit breaker and Polly integration.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Mediax.Core\Mediax.Core.csproj" />
+    <ProjectReference Include="..\Mediax.Runtime\Mediax.Runtime.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.11.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="10.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Resilience" Version="10.4.0" />
+    <PackageReference Include="Polly.Extensions" Version="8.6.6" />
+  </ItemGroup>
+
+</Project>

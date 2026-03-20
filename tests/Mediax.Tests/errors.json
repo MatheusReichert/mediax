@@ -1,0 +1,211 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-1.0.0",
+  "version": "1.0.0",
+  "runs": [
+    {
+      "tool": {
+        "name": "Microsoft (R) Visual C# Compiler",
+        "version": "5.0.0.0",
+        "fileVersion": "5.0.0-2.26075.103 (c2435c3e)",
+        "semanticVersion": "5.0.0",
+        "language": "en"
+      },
+      "results": [
+        {
+          "ruleId": "CS0311",
+          "level": "error",
+          "message": "The type 'Mediax.Core.IHandler<Mediax.Tests.Fixtures.EchoQuery, string>' cannot be used as type parameter 'TImplementation' in the generic type or method 'ServiceCollectionServiceExtensions.AddScoped<TService, TImplementation>(IServiceCollection)'. There is no implicit reference conversion from 'Mediax.Core.IHandler<Mediax.Tests.Fixtures.EchoQuery, string>' to 'Mediax.Tests.Fixtures.EchoQueryHandler'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/reichert/Desktop/mediax/tests/Mediax.Tests/obj/Debug/net10.0/generated/Mediax.SourceGenerator/Mediax.SourceGenerator.HandlerGenerator/DispatchTable.g.cs",
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 18,
+                  "endLine": 23,
+                  "endColumn": 154
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0311",
+          "level": "error",
+          "message": "The type 'Mediax.Core.IHandler<Mediax.Tests.Fixtures.FailingCommand, Mediax.Core.Unit>' cannot be used as type parameter 'TImplementation' in the generic type or method 'ServiceCollectionServiceExtensions.AddScoped<TService, TImplementation>(IServiceCollection)'. There is no implicit reference conversion from 'Mediax.Core.IHandler<Mediax.Tests.Fixtures.FailingCommand, Mediax.Core.Unit>' to 'Mediax.Tests.Fixtures.FailingCommandHandler'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/reichert/Desktop/mediax/tests/Mediax.Tests/obj/Debug/net10.0/generated/Mediax.SourceGenerator/Mediax.SourceGenerator.HandlerGenerator/DispatchTable.g.cs",
+                "region": {
+                  "startLine": 24,
+                  "startColumn": 18,
+                  "endLine": 24,
+                  "endColumn": 182
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0311",
+          "level": "error",
+          "message": "The type 'Mediax.Core.IHandler<Mediax.Tests.Fixtures.AddNumbersCommand, int>' cannot be used as type parameter 'TImplementation' in the generic type or method 'ServiceCollectionServiceExtensions.AddScoped<TService, TImplementation>(IServiceCollection)'. There is no implicit reference conversion from 'Mediax.Core.IHandler<Mediax.Tests.Fixtures.AddNumbersCommand, int>' to 'Mediax.Tests.Fixtures.AddNumbersHandler'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/reichert/Desktop/mediax/tests/Mediax.Tests/obj/Debug/net10.0/generated/Mediax.SourceGenerator/Mediax.SourceGenerator.HandlerGenerator/DispatchTable.g.cs",
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 18,
+                  "endLine": 25,
+                  "endColumn": 160
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0311",
+          "level": "error",
+          "message": "The type 'Mediax.Core.IHandler<Mediax.Tests.Fixtures.SampleEvent, Mediax.Core.Unit>' cannot be used as type parameter 'TImplementation' in the generic type or method 'ServiceCollectionServiceExtensions.AddScoped<TService, TImplementation>(IServiceCollection)'. There is no implicit reference conversion from 'Mediax.Core.IHandler<Mediax.Tests.Fixtures.SampleEvent, Mediax.Core.Unit>' to 'Mediax.Tests.Fixtures.SampleEventHandler'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/reichert/Desktop/mediax/tests/Mediax.Tests/obj/Debug/net10.0/generated/Mediax.SourceGenerator/Mediax.SourceGenerator.HandlerGenerator/DispatchTable.g.cs",
+                "region": {
+                  "startLine": 26,
+                  "startColumn": 18,
+                  "endLine": 26,
+                  "endColumn": 176
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0311",
+          "level": "error",
+          "message": "The type 'Mediax.Core.IStreamHandler<Mediax.Tests.Fixtures.SampleStreamRequest, int>' cannot be used as type parameter 'TImplementation' in the generic type or method 'ServiceCollectionServiceExtensions.AddScoped<TService, TImplementation>(IServiceCollection)'. There is no implicit reference conversion from 'Mediax.Core.IStreamHandler<Mediax.Tests.Fixtures.SampleStreamRequest, int>' to 'Mediax.Tests.Fixtures.SampleStreamHandler'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/reichert/Desktop/mediax/tests/Mediax.Tests/obj/Debug/net10.0/generated/Mediax.SourceGenerator/Mediax.SourceGenerator.HandlerGenerator/DispatchTable.g.cs",
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 18,
+                  "endLine": 27,
+                  "endColumn": 170
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MX0001",
+          "level": "error",
+          "message": "No [Handler] registered for request type 'Mediax.Tests.UnregisteredRequest'. Dispatch will fail at runtime.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/reichert/Desktop/mediax/tests/Mediax.Tests/DispatchTests.cs",
+                "region": {
+                  "startLine": 59,
+                  "startColumn": 28,
+                  "endLine": 59,
+                  "endColumn": 71
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CA1859",
+          "level": "note",
+          "message": "Change return type of method 'BuildSp' from 'System.IServiceProvider' to 'Microsoft.Extensions.DependencyInjection.ServiceProvider' for improved performance",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/reichert/Desktop/mediax/tests/Mediax.Tests/EventTests.cs",
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 37,
+                  "endLine": 12,
+                  "endColumn": 44
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1859",
+          "level": "note",
+          "message": "Change return type of method 'BuildSp' from 'System.IServiceProvider' to 'Microsoft.Extensions.DependencyInjection.ServiceProvider' for improved performance",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/reichert/Desktop/mediax/tests/Mediax.Tests/BehaviorTests.cs",
+                "region": {
+                  "startLine": 14,
+                  "startColumn": 37,
+                  "endLine": 14,
+                  "endColumn": 44
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        }
+      ],
+      "rules": {
+        "CA1859": {
+          "id": "CA1859",
+          "shortDescription": "Use concrete types when possible for improved performance",
+          "fullDescription": "Using concrete types avoids virtual or interface call overhead and enables inlining.",
+          "defaultLevel": "note",
+          "helpUri": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1859",
+          "properties": {
+            "category": "Performance",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Telemetry",
+              "EnabledRuleInAggressiveMode"
+            ]
+          }
+        },
+        "CS0311": {
+          "id": "CS0311",
+          "defaultLevel": "error",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS0311)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry",
+              "NotConfigurable"
+            ]
+          }
+        },
+        "MX0001": {
+          "id": "MX0001",
+          "shortDescription": "Missing handler for request",
+          "defaultLevel": "error",
+          "helpUri": "https://github.com/mediax/docs/MX0001",
+          "properties": {
+            "category": "Mediax",
+            "isEnabledByDefault": true
+          }
+        }
+      }
+    }
+  ]
+}

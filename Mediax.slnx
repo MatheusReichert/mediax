@@ -1,0 +1,19 @@
+<Solution>
+  <Folder Name="/samples/">
+    <Project Path="samples/Mediax.Sample/Mediax.Sample.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Mediax.AspNetCore/Mediax.AspNetCore.csproj" />
+    <Project Path="src/Mediax.Behaviors/Mediax.Behaviors.csproj" />
+    <Project Path="src/Mediax.Core/Mediax.Core.csproj" />
+    <Project Path="src/Mediax.Runtime/Mediax.Runtime.csproj" />
+    <Project Path="src/Mediax.SourceGenerator/Mediax.SourceGenerator.csproj" />
+    <Project Path="src/Mediax.Testing/Mediax.Testing.csproj" />
+  </Folder>
+  <Folder Name="/benchmarks/">
+    <Project Path="benchmarks/Mediax.Benchmarks/Mediax.Benchmarks.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Mediax.Tests/Mediax.Tests.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dotnet run:*)",
+      "Bash(grep -r IPipelineBehavior c:UsersreichertDesktopmediaxbenchmarks --include=*.cs)",
+      "Bash(find c:UsersreichertDesktopmediax -name *.cs -exec grep -l \"MediatR.*IPipelineBehavior\\\\|AddMediatR\" {})",
+      "Bash(2)",
+      "Read(//c/Users/reichert/.nuget/packages/mediatr/**)",
+      "Bash(grep -r \"AddBehavior\\\\|IPipelineBehavior\" c:UsersreichertDesktopmediaxbenchmarksMediax.Benchmarks --include=*.cs)",
+      "Bash(dotnet build:*)",
+      "Read(//c/Users/reichert/.claude/projects/c--Users-reichert-Desktop-mediax/976ebdaa-9576-4320-a1ad-26182696de0e/tool-results/**)",
+      "Bash(grep -v \"^$\")",
+      "Bash(wc -l /c/Users/reichert/Desktop/mediax/src/Mediax.Behaviors/*.cs)",
+      "Bash(wc -l /c/Users/reichert/Desktop/mediax/src/Mediax.Core/*.cs)",
+      "Bash(wc -l /c/Users/reichert/Desktop/mediax/src/Mediax.Runtime/*.cs /c/Users/reichert/Desktop/mediax/src/Mediax.SourceGenerator/*.cs /c/Users/reichert/Desktop/mediax/src/Mediax.Testing/*.cs)",
+      "Bash(wc -l /c/Users/reichert/Desktop/mediax/tests/Mediax.Tests/*.cs)",
+      "Bash(dotnet list:*)",
+      "Bash(find c:/Users/reichert/Desktop/mediax/benchmarks -name *report* -o -name *.md)",
+      "Bash(dotnet test:*)"
+    ]
+  }
+}
