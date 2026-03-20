@@ -575,7 +575,7 @@ app.MapPost("/orders", async (CreateOrderCommand cmd, CancellationToken ct) =>
 
 > Mediator resolves Scoped handlers without `IServiceScope`; this optimization is not yet in Mediax.
 
-### Pre/Post Processors
+### Pre/Post Processors Benchmark
 
 | Method | Mean | Alloc |
 | --- | ---: | ---: |
@@ -670,7 +670,7 @@ C# 14 resolves `extension(CreateOrderCommand)` with higher priority than `extens
 
 ## Package Structure
 
-```
+```text
 Mediax.Core            Interfaces, Result<T>, Error, extension members, decorators
 Mediax.SourceGenerator Roslyn generator: [Handler], 3 generated files, MX0001–MX0004
 Mediax.Runtime         MediaxRuntime, MediaxStartupHooks, DI extensions
