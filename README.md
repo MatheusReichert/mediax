@@ -1,6 +1,6 @@
 # Mediax
 
-> Mediator CQRS para **.NET 10 + C# 14** — zero reflexão, zero injeção de `IMediator`, zero alocações no hot path.
+> CQRS Mediator for **.NET 10 + C# 14** — no reflection, no `IMediator` injection, zero allocations on the hot path.
 
 [![CI](https://github.com/MatheusReichert/mediax/actions/workflows/ci.yml/badge.svg)](https://github.com/MatheusReichert/mediax/actions/workflows/ci.yml)
 [![NuGet](https://img.shields.io/nuget/v/Mediax.Core?label=NuGet)](https://www.nuget.org/packages/Mediax.Core)
@@ -9,56 +9,56 @@
 
 ---
 
-## Por que Mediax?
+## Why Mediax?
 
-| Problema nas bibliotecas atuais | Solução Mediax |
+| Problem with existing libraries | Mediax solution |
 | --- | --- |
-| Reflexão em runtime para descoberta de handlers | Dispatch table gerada em compile-time (source generator) |
-| `IMediator` injetado em todo consumer | Zero injeção — `cmd.Send()` via C# 14 extension members |
-| Exceção em runtime por handler não registrado | Erro de compilação `MX0001` |
-| Boxing e alocações no hot path | ~2–3 ns zero-alloc no path Singleton |
-| Sem `Result<T>` nativo | `Result<T>` nativo com `Match`, `Map`, `Bind` |
+| Runtime reflection for handler discovery | Compile-time dispatch table (source generator) |
+| `IMediator` injected into every consumer | Zero injection — `cmd.Send()` via C# 14 extension members |
+| Runtime exception for missing handlers | Compile-time error `MX0001` |
+| Boxing and allocations on the hot path | ~2–3 ns zero-alloc on the Singleton path |
+| No native `Result<T>` | Native `Result<T>` with `Match`, `Map`, `Bind` |
 
 ---
 
-## Instalação
+## Installation
 
 ```xml
-<!-- Handler discovery e dispatch table (obrigatório) -->
+<!-- Handler discovery and dispatch table (required) -->
 <PackageReference Include="Mediax.Core"            Version="0.1.0" />
 <PackageReference Include="Mediax.SourceGenerator" Version="0.1.0"
                   OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
 <PackageReference Include="Mediax.Runtime"         Version="0.1.0" />
 
-<!-- Behaviors prontos (opcional) -->
+<!-- Ready-to-use behaviors (optional) -->
 <PackageReference Include="Mediax.Behaviors"       Version="0.1.0" />
 
-<!-- ASP.NET Core integration (opcional) -->
+<!-- ASP.NET Core integration (optional) -->
 <PackageReference Include="Mediax.AspNetCore"      Version="0.1.0" />
 
-<!-- Testes (opcional) -->
+<!-- Testing utilities (optional) -->
 <PackageReference Include="Mediax.Testing"         Version="0.1.0" />
 ```
 
 ---
 
-## Início rápido
+## Quick Start
 
-### 1. Definir o request
+### 1. Define the request
 
 ```csharp
-// Comando (write)
+// Command (write)
 public record CreateOrderCommand(IReadOnlyList<OrderItem> Items, CustomerId Customer)
     : ICommand<OrderId>;
 
 // Query (read)
 public record GetOrderQuery(OrderId Id) : IQuery<Order>;
 
-// Evento (pub/sub)
+// Event (pub/sub)
 public record OrderCreatedEvent(OrderId OrderId) : IEvent;
 ```
 
-### 2. Implementar o handler
+### 2. Implement the handler
 
 ```csharp
 [Handler]
@@ -75,14 +75,14 @@ public sealed class CreateOrderHandler : IHandler<CreateOrderCommand, OrderId>
 }
 ```
 
-### 3. Registrar e usar
+### 3. Register and use
 
 ```csharp
 // Program.cs
 DispatchTable.RegisterAll(builder.Services);
 app.UseMediax();
 
-// Controller / Minimal API — zero IMediator injetado
+// Controller / Minimal API — no IMediator injected
 var result = await new CreateOrderCommand(items, customerId).Send();
 
 result.Match(
@@ -92,21 +92,21 @@ result.Match(
 
 ---
 
-## Interfaces de request
+## Request Interfaces
 
 ```csharp
-IRequest<TResponse>       // base — use para requests genéricos
-ICommand<TResponse>       // semântica de escrita
-IQuery<TResponse>         // semântica de leitura
-IEvent                    // pub/sub, resposta Unit
-IStreamRequest<TResponse> // streaming IAsyncEnumerable
+IRequest<TResponse>       // base — use for generic requests
+ICommand<TResponse>       // write semantics
+IQuery<TResponse>         // read semantics
+IEvent                    // pub/sub, returns Unit
+IStreamRequest<TResponse> // streaming via IAsyncEnumerable
 ```
 
 ---
 
 ## Handlers
 
-### Handler simples
+### Simple handler
 
 ```csharp
 [Handler]
@@ -117,26 +117,26 @@ public sealed class EchoHandler : IHandler<EchoQuery, string>
 }
 ```
 
-### Lifetime do handler
+### Handler lifetime
 
-O padrão é `Singleton`. Para handlers com dependências escopadas:
+The default is `Singleton`. Use `Scoped` for handlers with scoped dependencies:
 
 ```csharp
 [Handler(Lifetime = HandlerLifetime.Scoped)]
 public sealed class CreateOrderHandler : IHandler<CreateOrderCommand, OrderId>
 {
-    public CreateOrderHandler(AppDbContext db) => _db = db; // DbContext é Scoped
+    public CreateOrderHandler(AppDbContext db) => _db = db; // DbContext is Scoped
     // ...
 }
 ```
 
-| Lifetime | DI | Quando usar |
+| Lifetime | DI | When to use |
 | --- | --- | --- |
-| `Singleton` (padrão) | Uma instância global | Handler sem dependências escopadas — máxima performance |
-| `Scoped` | Uma instância por request HTTP | Handler com `DbContext` ou qualquer serviço Scoped |
-| `Transient` | Nova instância por dispatch | Raro; use quando o handler tem estado mutável por chamada |
+| `Singleton` (default) | One global instance | Handler with no scoped dependencies — maximum performance |
+| `Scoped` | One instance per HTTP request | Handler with `DbContext` or any scoped service |
+| `Transient` | New instance per dispatch | Rare; use when the handler holds mutable per-call state |
 
-### Handler de streaming
+### Streaming handler
 
 ```csharp
 public record LivePricesQuery(string[] Tickers) : IStreamRequest<TickerPrice>;
@@ -152,16 +152,16 @@ public sealed class LivePricesHandler : IStreamHandler<LivePricesQuery, TickerPr
     }
 }
 
-// Uso
+// Usage
 await foreach (var price in new LivePricesQuery(tickers).Stream())
     Console.WriteLine(price);
 ```
 
 ---
 
-## Eventos e pub/sub
+## Events and Pub/Sub
 
-### Handler único via `IHandler`
+### Single subscriber via `IHandler`
 
 ```csharp
 [Handler]
@@ -175,9 +175,9 @@ public sealed class SendConfirmationHandler : IHandler<OrderCreatedEvent, Unit>
 }
 ```
 
-### Múltiplos subscribers via `IEventHandler<T>`
+### Multiple subscribers via `IEventHandler<T>`
 
-Registre quantos handlers quiser para o mesmo evento — todos serão invocados:
+Register as many handlers as you want for the same event — all will be invoked:
 
 ```csharp
 [Handler]
@@ -193,20 +193,20 @@ public sealed class AnalyticsHandler : IEventHandler<OrderCreatedEvent>
 }
 ```
 
-### Estratégias de publicação
+### Publish strategies
 
 ```csharp
-// Sequencial (padrão) — falha interrompe a cadeia
+// Sequential (default) — a failure stops the chain
 await new OrderCreatedEvent(orderId).Publish(EventStrategy.Sequential, ct);
 
-// Paralelo — aguarda todos, retorna primeira falha se houver
+// Parallel — waits for all, returns first failure if any
 await new OrderCreatedEvent(orderId).Publish(EventStrategy.ParallelWhenAll, ct);
 
-// Fire-and-forget — não aguarda, não propaga falhas
+// Fire-and-forget — does not wait, does not propagate failures
 await new OrderCreatedEvent(orderId).Publish(EventStrategy.ParallelFireAndForget, ct);
 ```
 
-### Batch de eventos
+### Event batch
 
 ```csharp
 ReadOnlySpan<IEvent> events = [new OrderCreated(id1), new OrderCreated(id2)];
@@ -217,7 +217,7 @@ await events.PublishBatch(ct);
 
 ## Result\<T\>
 
-`Result<T>` é um discriminated union — nunca lança exceção por falha de negócio:
+`Result<T>` is a discriminated union — never throws on business failures:
 
 ```csharp
 var result = await new GetOrderQuery(id).Send();
@@ -234,14 +234,14 @@ Result<string> label = result
         ? Result<string>.Fail(Error.NotFound("ORDER_CANCELLED", "Order was cancelled"))
         : Result<string>.Ok(status));
 
-// Checar e acessar
+// Check and access
 if (result.IsSuccess)
     Console.WriteLine(result.Value);
 else
     Console.WriteLine(result.Error!.Code);
 ```
 
-### Tipos de Error
+### Error types
 
 ```csharp
 Error.NotFound("ORDER_NOT_FOUND", "Order 42 does not exist")
@@ -254,11 +254,11 @@ Error.Forbidden("ROLE_REQUIRED", "Insufficient permissions")
 
 ---
 
-## Pipeline behaviors
+## Pipeline Behaviors
 
-Behaviors envolvem a execução do handler. Aplicados via `[UseBehavior]` no handler ou automaticamente por atributos como `[Validate]` e `[Cache]`.
+Behaviors wrap handler execution. Applied via `[UseBehavior]` on the handler, or automatically via attributes like `[Validate]` and `[Cache]`.
 
-### Behavior customizado
+### Custom behavior
 
 ```csharp
 public sealed class MetricsBehavior<TRequest, TResponse> : IBehavior<TRequest, TResponse>
@@ -279,40 +279,40 @@ public sealed class MetricsBehavior<TRequest, TResponse> : IBehavior<TRequest, T
 public sealed class CreateOrderHandler : IHandler<CreateOrderCommand, OrderId> { ... }
 ```
 
-Múltiplos behaviors — ordem de declaração = ordem de execução (mais externo primeiro):
+Multiple behaviors — declaration order = execution order (outermost first):
 
 ```csharp
 [Handler]
-[UseBehavior(typeof(LogBehavior<,>))]        // 1° (mais externo)
-[UseBehavior(typeof(ValidationBehavior<,>))] // 2°
-[UseBehavior(typeof(MetricsBehavior<,>))]    // 3° (mais interno)
+[UseBehavior(typeof(LogBehavior<,>))]        // 1st (outermost)
+[UseBehavior(typeof(ValidationBehavior<,>))] // 2nd
+[UseBehavior(typeof(MetricsBehavior<,>))]    // 3rd (innermost)
 public sealed class CreateOrderHandler : IHandler<CreateOrderCommand, OrderId> { ... }
-// Execução: Log → Validation → Metrics → Handler
+// Execution: Log → Validation → Metrics → Handler
 ```
 
-### Behaviors globais (para todos os handlers)
+### Global behaviors (applied to all handlers)
 
 ```csharp
-// AssemblyInfo.cs ou Program.cs
-[assembly: GlobalBehavior(typeof(LogBehavior<,>),        Order = -100)]
-[assembly: GlobalBehavior(typeof(TracingBehavior<,>),    Order = -50)]
+// AssemblyInfo.cs
+[assembly: GlobalBehavior(typeof(LogBehavior<,>),     Order = -100)]
+[assembly: GlobalBehavior(typeof(TracingBehavior<,>), Order = -50)]
 ```
 
-### Behaviors incluídos em `Mediax.Behaviors`
+### Behaviors included in `Mediax.Behaviors`
 
-| Behavior | Atributo / Registro | Descrição |
+| Behavior | Registration | Description |
 | --- | --- | --- |
-| `LogBehavior<,>` | `[UseBehavior]` | Loga início, fim e falhas com `ILogger` |
-| `TracingBehavior<,>` | `[UseBehavior]` | Cria spans OpenTelemetry por request |
-| `ValidationBehavior<,>` | `[Validate]` no request | Executa todos `IValidator<T>` (FluentValidation) |
-| `CacheBehavior<,>` | `[Cache(Ttl = 60)]` no request | Cacheia resposta em `IDistributedCache` |
-| `TransactionBehavior<,>` | `[UseBehavior]` | Abre/comita `DbTransaction` por request |
-| `IdempotencyBehavior<,>` | `[UseBehavior]` | Deduplica requests pelo `IdempotencyKey` |
-| `CircuitBreakerBehavior<,>` | `[UseBehavior]` | Circuit breaker por tipo de request |
-| `ProcessorBehavior<,>` | `[UseBehavior]` | Executa pre/post processors registrados no DI |
-| `PollyBehavior<,>` | `[UseBehavior]` | Integração com Polly v8 para retry/timeout/bulkhead |
+| `LogBehavior<,>` | `[UseBehavior]` | Logs start, end and failures via `ILogger` |
+| `TracingBehavior<,>` | `[UseBehavior]` | Creates OpenTelemetry spans per request |
+| `ValidationBehavior<,>` | `[Validate]` on request | Runs all `IValidator<T>` (FluentValidation) |
+| `CacheBehavior<,>` | `[Cache(Ttl = 60)]` on request | Caches response in `IDistributedCache` |
+| `TransactionBehavior<,>` | `[UseBehavior]` | Opens/commits a `DbTransaction` per request |
+| `IdempotencyBehavior<,>` | `[UseBehavior]` | Deduplicates requests by `IdempotencyKey` |
+| `CircuitBreakerBehavior<,>` | `[UseBehavior]` | Circuit breaker per request type |
+| `ProcessorBehavior<,>` | `[UseBehavior]` | Runs pre/post processors registered in DI |
+| `PollyBehavior<,>` | `[UseBehavior]` | Polly v8 integration (retry/timeout/bulkhead) |
 
-### Validação automática com FluentValidation
+### Automatic validation with FluentValidation
 
 ```csharp
 [Validate]
@@ -325,22 +325,22 @@ public sealed class CreateOrderValidator : AbstractValidator<CreateOrderCommand>
         RuleFor(x => x.Items).NotEmpty().WithMessage("Order must have at least one item.");
     }
 }
-// O generator auto-injeta ValidationBehavior — falha retorna Result.Fail(...), nunca lança exceção
+// Generator auto-injects ValidationBehavior — failures return Result.Fail(...), never throw
 ```
 
-### Cache automático
+### Automatic caching
 
 ```csharp
-[Cache(Ttl = 300)] // 5 minutos
+[Cache(Ttl = 300)] // 5 minutes
 public record GetProductQuery(ProductId Id) : IQuery<Product>;
-// Requer IDistributedCache no DI
+// Requires IDistributedCache in DI
 ```
 
 ---
 
 ## Pre/Post Processors
 
-Processadores leves que executam antes/depois do handler sem criar um behavior por tipo:
+Lightweight processors that run before/after the handler without creating a behavior per type:
 
 ```csharp
 public sealed class AuditPreProcessor : IRequestPreProcessor<CreateOrderCommand>
@@ -361,11 +361,11 @@ public sealed class NotifyPostProcessor : IRequestPostProcessor<CreateOrderComma
     }
 }
 
-// Registro
-services.AddScoped<IRequestPreProcessor<CreateOrderCommand>,        AuditPreProcessor>();
+// Registration
+services.AddScoped<IRequestPreProcessor<CreateOrderCommand>,           AuditPreProcessor>();
 services.AddScoped<IRequestPostProcessor<CreateOrderCommand, OrderId>, NotifyPostProcessor>();
 
-// Habilitar no handler (ProcessorBehavior faz a ligação)
+// Wire to the handler
 [Handler]
 [UseBehavior(typeof(ProcessorBehavior<,>))]
 public sealed class CreateOrderHandler : IHandler<CreateOrderCommand, OrderId> { ... }
@@ -373,9 +373,9 @@ public sealed class CreateOrderHandler : IHandler<CreateOrderCommand, OrderId> {
 
 ---
 
-## Decorators de request
+## Request Decorators
 
-Timeout e retry sem alterar o handler:
+Timeout and retry without modifying the handler:
 
 ```csharp
 var result = await new GetExternalDataQuery(id)
@@ -386,7 +386,7 @@ var result = await new CallPaymentGatewayCommand(payload)
     .WithRetry(maxAttempts: 3)
     .Send(ct);
 
-// Combinados
+// Combined
 var result = await new GetExternalDataQuery(id)
     .WithTimeout(TimeSpan.FromSeconds(5))
     .WithRetry(3)
@@ -395,9 +395,9 @@ var result = await new GetExternalDataQuery(id)
 
 ---
 
-## Dispatch polimórfico
+## Polymorphic Dispatch
 
-Quando o tipo do request é conhecido apenas em runtime:
+When the request type is only known at runtime:
 
 ```csharp
 public class RequestRouter(IMediaxDispatcher dispatcher)
@@ -410,28 +410,28 @@ public class RequestRouter(IMediaxDispatcher dispatcher)
 }
 ```
 
-O dispatcher gerado usa `switch` de pattern matching — sem reflexão, ~8 ns.
+The generated dispatcher uses a `switch` pattern match — no reflection, ~8 ns.
 
 ---
 
-## Diagnósticos do compilador
+## Compiler Diagnostics
 
-| Código | Severidade | Descrição |
+| Code | Severity | Description |
 | --- | --- | --- |
-| `MX0001` | Erro | Handler não encontrado para um tipo de request |
-| `MX0002` | Erro | Múltiplos `[Handler]` para o mesmo tipo de request não-evento |
-| `MX0003` | Aviso | Loop de behavior — mesmo tipo declarado duas vezes em `[UseBehavior]` |
-| `MX0004` | Aviso | Dependência cativa — handler Singleton com behavior que recebe `DbContext` |
+| `MX0001` | Error | No handler found for a request type |
+| `MX0002` | Error | Multiple `[Handler]` for the same non-event request type |
+| `MX0003` | Warning | Behavior loop — same type declared twice in `[UseBehavior]` |
+| `MX0004` | Warning | Captive dependency — Singleton handler with a behavior that receives `DbContext` |
 
 ---
 
-## Auto-discovery
+## Auto-Discovery
 
 ```csharp
-// Registra da assembly atual: IValidator<T>, IBehavior<,>, processors, IEventHandler<>
+// Register from the calling assembly: IValidator<T>, IBehavior<,>, processors, IEventHandler<>
 services.AddMediaxFromCallingAssembly();
 
-// Ou explícito
+// Or specify assemblies explicitly
 services.AddMediaxFromAssemblies(
     typeof(Program).Assembly,
     typeof(SomeOtherHandler).Assembly);
@@ -439,9 +439,9 @@ services.AddMediaxFromAssemblies(
 
 ---
 
-## Testes
+## Testing
 
-### Unitários com `FakeDispatcher`
+### Unit tests with `FakeDispatcher`
 
 ```csharp
 var fake = new FakeDispatcher();
@@ -453,10 +453,10 @@ Assert.True(result.IsSuccess);
 Assert.True(fake.WasDispatched<CreateOrderCommand>());
 ```
 
-### API do `FakeDispatcher`
+### `FakeDispatcher` API
 
 ```csharp
-// Configurar respostas
+// Configure responses
 fake.Returns<MyQuery, MyResult>(new MyResult("ok"));
 fake.Returns<MyQuery, MyResult>(query => new MyResult(query.Id.ToString()));
 fake.Fails<MyCommand, Unit>(Error.Internal("DB_ERROR", "timeout"));
@@ -465,16 +465,16 @@ fake.Fails<MyCommand, Unit>(Error.Internal("DB_ERROR", "timeout"));
 fake.ReturnsStream<LiveQuery, Price>(new[] { price1, price2 });
 fake.ReturnsStream<LiveQuery, Price>(req => GetPricesAsync(req.Tickers));
 
-// Verificação
+// Verification
 bool dispatched  = fake.WasDispatched<MyCommand>();
 bool withFilter  = fake.WasDispatched<MyCommand>(cmd => cmd.Id == 42);
 int  count       = fake.DispatchCount<MyCommand>();
 var  allRequests = fake.GetDispatched<MyCommand>();
 
-fake.Reset(); // limpar entre testes
+fake.Reset(); // clear between tests
 ```
 
-### Integração com `MediaxWebApplicationFactory`
+### Integration tests with `MediaxWebApplicationFactory`
 
 ```csharp
 public class OrderEndpointTests : MediaxWebApplicationFactory<Program>
@@ -493,14 +493,14 @@ public class OrderEndpointTests : MediaxWebApplicationFactory<Program>
 }
 ```
 
-`MediaxWebApplicationFactory<TEntryPoint>` substitui automaticamente o `IMediaxDispatcher` real pelo `FakeDispatcher` — intercepta tanto chamadas via interface quanto via `.Send()`.
+`MediaxWebApplicationFactory<TEntryPoint>` automatically replaces the real `IMediaxDispatcher` with `FakeDispatcher` — intercepting both interface calls and `.Send()`.
 
-### Isolamento entre testes paralelos (`MediaxTestBase`)
+### Parallel test isolation (`MediaxTestBase`)
 
 ```csharp
 public class MyTests : MediaxTestBase
 {
-    // AsyncLocal garante que cada teste paralelo veja seu próprio FakeDispatcher
+    // AsyncLocal ensures each parallel test sees its own FakeDispatcher
     [Fact]
     public async Task Test1()
     {
@@ -517,9 +517,9 @@ public class MyTests : MediaxTestBase
 ```csharp
 // Program.cs
 DispatchTable.RegisterAll(builder.Services);
-app.UseMediax(); // inicializa MediaxRuntime e conecta o dispatcher
+app.UseMediax(); // initializes MediaxRuntime and wires the dispatcher
 
-// Minimal API — sem IMediator injetado
+// Minimal API — no IMediator injected
 app.MapPost("/orders", async (CreateOrderCommand cmd, CancellationToken ct) =>
 {
     var result = await cmd.Send(ct);
@@ -538,10 +538,10 @@ app.MapPost("/orders", async (CreateOrderCommand cmd, CancellationToken ct) =>
 
 ## Benchmarks
 
-> **Ambiente:** BenchmarkDotNet v0.15.8 · .NET 10.0.3 · AMD Ryzen 5 8600G 4.35 GHz · Windows 11 25H2
+> **Environment:** BenchmarkDotNet v0.15.8 · .NET 10.0.3 · AMD Ryzen 5 8600G 4.35 GHz · Windows 11 25H2
 > `Job=Short  WarmupCount=3  IterationCount=5`
 
-### Dispatch básico (Singleton, sem behaviors)
+### Basic dispatch (Singleton, no behaviors)
 
 | Method | Mean | Alloc | vs MediatR |
 | --- | ---: | ---: | ---: |
@@ -549,7 +549,7 @@ app.MapPost("/orders", async (CreateOrderCommand cmd, CancellationToken ct) =>
 | Mediator | 10.1 ns | 0 B | 7.7× |
 | MediatR | 77.9 ns | 384 B | 1× |
 
-### Dispatch com behavior (Singleton)
+### Dispatch with behavior (Singleton)
 
 | Method | Mean | Alloc | vs MediatR |
 | --- | ---: | ---: | ---: |
@@ -557,7 +557,7 @@ app.MapPost("/orders", async (CreateOrderCommand cmd, CancellationToken ct) =>
 | Mediator | 9.3 ns | 0 B | 8× |
 | MediatR | 73.8 ns | 384 B | 1× |
 
-### Dispatch polimórfico (`IRequest<T>` como variável)
+### Polymorphic dispatch (`IRequest<T>` as variable)
 
 | Method | Mean | Alloc |
 | --- | ---: | ---: |
@@ -565,7 +565,7 @@ app.MapPost("/orders", async (CreateOrderCommand cmd, CancellationToken ct) =>
 | **Mediax** | **8.8 ns** | **0 B** |
 | MediatR | 43.6 ns | 200 B |
 
-### Scoped handler (cria `IServiceScope` por chamada)
+### Scoped handler (creates `IServiceScope` per call)
 
 | Method | Mean | Alloc |
 | --- | ---: | ---: |
@@ -573,7 +573,7 @@ app.MapPost("/orders", async (CreateOrderCommand cmd, CancellationToken ct) =>
 | **Mediax** | 71 ns | 336 B |
 | MediatR | 74.6 ns | 384 B |
 
-> Mediator resolve handlers Scoped sem `IServiceScope`; essa otimização ainda não está no Mediax.
+> Mediator resolves Scoped handlers without `IServiceScope`; this optimization is not yet in Mediax.
 
 ### Pre/Post Processors
 
@@ -583,7 +583,7 @@ app.MapPost("/orders", async (CreateOrderCommand cmd, CancellationToken ct) =>
 | **Mediax** | **32 ns** | **0 B** |
 | MediatR | 84.6 ns | 456 B |
 
-### Eventos — single subscriber
+### Events — single subscriber
 
 | Method | Mean | Alloc | vs MediatR |
 | --- | ---: | ---: | ---: |
@@ -591,14 +591,14 @@ app.MapPost("/orders", async (CreateOrderCommand cmd, CancellationToken ct) =>
 | **Mediax Sequential** | **38.7 ns** | **0 B** | **4.5×** |
 | MediatR | 175 ns | 768 B | 1× |
 
-### Eventos — 3 subscribers (sequential)
+### Events — 3 subscribers (sequential)
 
 | Method | Mean | Alloc | vs MediatR |
 | --- | ---: | ---: | ---: |
 | **Mediax Sequential** | **130 ns** | **0 B** | **1.76×** |
 | MediatR | 229 ns | 1248 B | 1× |
 
-### Eventos — 3 subscribers (parallel WhenAll)
+### Events — 3 subscribers (parallel WhenAll)
 
 | Method | Mean | Alloc | vs MediatR |
 | --- | ---: | ---: | ---: |
@@ -621,39 +621,39 @@ app.MapPost("/orders", async (CreateOrderCommand cmd, CancellationToken ct) =>
 | 1 item | 566 ns | 344 B |
 | 10 items | 3.7 µs | 344 B |
 
-### Rodar os benchmarks
+### Running the benchmarks
 
 ```bash
 cd benchmarks/Mediax.Benchmarks
-dotnet run -c Release                               # todos
-dotnet run -c Release -- --filter "*Event*"         # eventos
-dotnet run -c Release -- --filter "*Polymorphic*"   # dispatch polimórfico
+dotnet run -c Release                               # all
+dotnet run -c Release -- --filter "*Event*"         # events only
+dotnet run -c Release -- --filter "*Polymorphic*"   # polymorphic dispatch
 dotnet run -c Release -- --filter "*Decorator*"     # timeout / retry
 dotnet run -c Release -- --filter "*Processor*"     # pre/post processors
-dotnet run -c Release -- --list flat                # listar todos
+dotnet run -c Release -- --list flat                # list all benchmarks
 ```
 
 ---
 
-## Arquitetura — 3 arquivos gerados por compilação
+## Architecture — 3 Generated Files per Build
 
 ### `DispatchTable.g.cs`
 
-`FrozenDictionary<Type, Type>` + método `RegisterAll()` que registra todos os handlers e o `MediaxDispatcher` no DI.
+`FrozenDictionary<Type, Type>` + `RegisterAll()` that registers all handlers and `MediaxDispatcher` in DI.
 
 ### `MediaxDispatcher.g.cs`
 
-`internal sealed class MediaxDispatcher : IMediaxDispatcher` com switch de pattern matching por tipo. Usado no path polimórfico e como fallback.
+`internal sealed class MediaxDispatcher : IMediaxDispatcher` with type pattern matching switch. Used for polymorphic dispatch and as fallback.
 
 ### `MediaxStaticDispatch.g.cs`
 
-O núcleo da performance. Contém:
+The performance core. Contains:
 
-- `MediaxStaticHandlers` com campo `volatile MediaxDispatcher? _dispatcher` preenchido via `[ModuleInitializer]`
-- **Extension members** por tipo concreto (C# 14) — um bloco `extension(ConcreteType)` por handler
+- `MediaxStaticHandlers` with a `volatile MediaxDispatcher? _dispatcher` field populated via `[ModuleInitializer]`
+- **Per-type extension members** (C# 14) — one `extension(ConcreteType)` block per handler
 
 ```csharp
-// Código gerado — zero boxing, zero switch, zero dicionário
+// Generated code — zero boxing, zero switch, zero dictionary lookup
 extension(MyApp.CreateOrderCommand request)
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -664,15 +664,15 @@ extension(MyApp.CreateOrderCommand request)
 }
 ```
 
-C# 14 resolve `extension(CreateOrderCommand)` com precedência sobre `extension<T>(IRequest<T>)` quando o receiver é estaticamente tipado — `cmd.Send()` compila para chamada direta ao método do dispatcher singleton.
+C# 14 resolves `extension(CreateOrderCommand)` with higher priority than `extension<T>(IRequest<T>)` when the receiver is statically typed — `cmd.Send()` compiles to a direct call on the singleton dispatcher.
 
 ---
 
-## Estrutura de pacotes
+## Package Structure
 
 ```
 Mediax.Core            Interfaces, Result<T>, Error, extension members, decorators
-Mediax.SourceGenerator Roslyn generator: [Handler], 3 arquivos gerados, MX0001–MX0004
+Mediax.SourceGenerator Roslyn generator: [Handler], 3 generated files, MX0001–MX0004
 Mediax.Runtime         MediaxRuntime, MediaxStartupHooks, DI extensions
 Mediax.Behaviors       Log, Tracing, Validation, Cache, Transaction,
                        Idempotency, CircuitBreaker, Processor, Polly
@@ -682,7 +682,7 @@ Mediax.Testing         FakeDispatcher, MediaxTestBase, MediaxWebApplicationFacto
 
 ---
 
-## Contribuindo
+## Contributing
 
 ```bash
 git clone https://github.com/MatheusReichert/mediax
@@ -691,20 +691,20 @@ dotnet build Mediax.slnx
 dotnet test  Mediax.slnx
 ```
 
-PRs são bem-vindos. Abra uma issue antes de mudanças grandes.
+PRs are welcome. Please open an issue before large changes.
 
 ---
 
 ## Roadmap
 
-| Versão | Escopo |
+| Version | Scope |
 | --- | --- |
-| **v0.1** Alpha | IRequest, [Handler], source generator, .Send(), Result\<T\>, behaviors, eventos, streaming ✅ |
-| **v0.2** Beta | Mediax.Aspire — integração com .NET Aspire 13 |
-| **v1.0** | API congelada, documentação completa, benchmarks publicados, .NET 10 LTS |
+| **v0.1** Alpha | IRequest, [Handler], source generator, .Send(), Result\<T\>, behaviors, events, streaming ✅ |
+| **v0.2** Beta | Mediax.Aspire — .NET Aspire 13 integration |
+| **v1.0** | Frozen API, full documentation, published benchmarks, .NET 10 LTS |
 
 ---
 
-## Licença
+## License
 
 MIT © Mediax Contributors

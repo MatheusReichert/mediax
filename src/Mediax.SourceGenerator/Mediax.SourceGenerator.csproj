@@ -20,4 +20,14 @@
     <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0" PrivateAssets="all" />
   </ItemGroup>
 
+  <!-- Place the analyzer DLL in the correct folder inside the NuGet package.
+       Without this, IncludeBuildOutput=false produces an empty package and
+       the generator is never discovered by the consumer's compiler. -->
+  <ItemGroup>
+    <None Include="$(OutputPath)$(AssemblyName).dll"
+          Pack="true"
+          PackagePath="analyzers/dotnet/cs"
+          Visible="false" />
+  </ItemGroup>
+
 </Project>
